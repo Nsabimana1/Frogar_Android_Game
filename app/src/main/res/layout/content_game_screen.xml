@@ -13,7 +13,7 @@
         android:layout_width="93dp"
         android:layout_height="56dp"
         android:layout_marginStart="72dp"
-        android:layout_marginBottom="76dp"
+        android:layout_marginBottom="48dp"
         android:text="Play"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -23,9 +23,18 @@
         android:layout_width="93dp"
         android:layout_height="55dp"
         android:layout_marginEnd="96dp"
-        android:layout_marginBottom="76dp"
+        android:layout_marginBottom="48dp"
         android:text="Restart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="501dp"
+        android:layout_height="681dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/road" />
 
 </android.support.constraint.ConstraintLayout>
