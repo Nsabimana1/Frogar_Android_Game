@@ -2,11 +2,23 @@ package com.nsabimanainnocent1.frogar;
 
 public class Lives {
 
-    public int lives = 100;
+    public int lives = 3;
 
-    public int subtractLife(int lives){
-        int livesLeft = lives - 1;
-        return livesLeft;
+    public void subtractLife(int livesLeft){
+        livesLeft -= 1;
+        if(!hasLivesLeft(livesLeft)){
+            //TODO add function/method
+        }
+    }
+
+    public boolean hasLivesLeft(int livesLeft){
+        boolean hasLives;
+        if (livesLeft <= 0){
+            hasLives = false;
+        }else{
+            hasLives = true;
+        }
+        return hasLives;
     }
 
 
