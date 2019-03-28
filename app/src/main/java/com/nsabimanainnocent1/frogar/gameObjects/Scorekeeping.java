@@ -1,18 +1,16 @@
 package com.nsabimanainnocent1.frogar.gameObjects;
 
-import android.view.Display;
-import android.view.WindowManager;
-
-import com.nsabimanainnocent1.frogar.GameScreen;
-
 public class Scorekeeping {
+
+    public Scorekeeping(){
+    }
 
     public int score = 0;
     public int leftScoreZone;
     public boolean reachedLeftZone = true;
     public int rightScoreZone;
     public boolean reachedRightZone = false;
-    public int frogPosition;
+    public int xFrogPosition;
 
     public void addPoint() {
         score += 1;
@@ -20,24 +18,26 @@ public class Scorekeeping {
 
     public int getScore() { return score; }
 
-    public void checkLeftScoreZone(){
-        if(frogPosition == leftScoreZone){
+    public void reachedSide(){
+        if(reachedRightZone){
+            reachedLeftZone = false;
+        }
+        else{
             reachedLeftZone = true;
-            reachedRightZone = false;
-            addPoint();
-        }else{
-
         }
     }
 
-    public void checkRightScoreZone(){
-        if(frogPosition == rightScoreZone){
-            reachedRightZone = true;
-            reachedLeftZone = false;
+    public void frogScored(){
+        if(xFrogPosition == leftScoreZone){
+            reachedSide();
+            addPoint();
+        }else if(xFrogPosition == rightScoreZone){
+            reachedSide();
             addPoint();
         }else{
             
         }
     }
+
 
 }
