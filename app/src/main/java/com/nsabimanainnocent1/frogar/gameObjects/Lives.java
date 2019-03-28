@@ -2,23 +2,25 @@ package com.nsabimanainnocent1.frogar.gameObjects;
 
 public class Lives {
 
+    public Lives(){}
+
     public int lives = 3;
 
-    public void subtractLife(int livesLeft){
-        livesLeft -= 1;
-        if(!hasLivesLeft(livesLeft)){
-            //TODO add function/method
+    public void subtractLife(){
+        lives -= 1;
+        if(!hasLivesLeft()){
+            //TODO add function/method that connects to game screen
+        }else{
+
         }
     }
 
-    public boolean hasLivesLeft(int livesLeft){
-        boolean hasLives;
-        if (livesLeft <= 0){
-            hasLives = false;
+    private boolean hasLivesLeft(){
+        if (lives <= 0){
+            return false;
         }else{
-            hasLives = true;
+            return true;
         }
-        return hasLives;
     }
 
 
