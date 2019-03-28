@@ -1,4 +1,4 @@
-package com.nsabimanainnocent1.frogar;
+package com.nsabimanainnocent1.frogar.gameObjects;
 
 public interface Object {
     public void move();

@@ -1,6 +1,8 @@
-package com.nsabimanainnocent1.frogar;
+package com.nsabimanainnocent1.frogar.gameObjects;
 
-public class Car implements Object{
+import com.nsabimanainnocent1.frogar.gameObjects.Object;
+
+public class Car implements Object {
     long x;
     long y;
     long velX;
