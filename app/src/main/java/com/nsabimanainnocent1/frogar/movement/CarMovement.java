@@ -18,6 +18,9 @@ public class CarMovement extends Timer {
     }
 
     public void moveCars(){
-
+        int carSpeedFactor = 1;
+        for (int i = 0; i >= cars.size()-1; i++){
+            
+        }
     }
 }

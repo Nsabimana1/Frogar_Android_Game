@@ -34,4 +34,12 @@ public class FrogMovement extends MainActivity{
         }, sensor, SensorManager.SENSOR_DELAY_NORMAL);
     }
 
+    public long getXVelocity(){
+        return Math.round(xFrogSpeed);
+    }
+
+    public long getYVelocity(){
+        return Math.round(yFrogSpeed);
+    }
+
 }
