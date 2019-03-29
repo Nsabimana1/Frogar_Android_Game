@@ -1,19 +1,36 @@
 package com.nsabimanainnocent1.frogar.movement;
 
+import android.app.Activity;
 import android.content.Context;
 import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import com.nsabimanainnocent1.frogar.MainActivity;
+import android.content.Context.*;
 
-import static android.content.Context.*;
-import static android.support.v4.content.ContextCompat.getSystemService;
-
-public class FrogMovement {
-    private SensorManager sensorManager;;
+public class FrogMovement extends MainActivity{
+    private SensorManager sensorManager;
     private Sensor sensor;
+    private int xFrogSpeed;
+    private int yFrogSpeed;
 
     public FrogMovement(){
-//        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-//        sensor = SensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        sensorManager.registerListener(new SensorEventListener() {
+            @Override
+            public void onSensorChanged(SensorEvent event) {
+
+            }
+
+            @Override
+            public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+            }
+        }, sensor, SensorManager.SENSOR_DELAY_NORMAL);
     }
+
+    public int setFrogSpeed
 
 }

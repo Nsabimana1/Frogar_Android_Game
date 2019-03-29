@@ -7,6 +7,7 @@ public class Frog implements Object {
     private long y;
     private long velX;
     private long velY;
+
     public Frog(long x, long y){
         this.x = x;
         this.y = y;
@@ -19,7 +20,8 @@ public class Frog implements Object {
 
     @Override
     public void stop() {
-
+        velX = 0;
+        velY = 0;
     }
 
     @Override
@@ -31,4 +33,6 @@ public class Frog implements Object {
     public void slowDown() {
 
     }
+
+
 }
