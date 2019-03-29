@@ -7,13 +7,15 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import com.nsabimanainnocent1.frogar.MainActivity;
+import com.nsabimanainnocent1.frogar.gameObjects.Frog;
+
 import android.content.Context.*;
 
 public class FrogMovement extends MainActivity{
     private SensorManager sensorManager;
     private Sensor sensor;
-    private int xFrogSpeed;
-    private int yFrogSpeed;
+    public float xFrogSpeed;
+    public float yFrogSpeed;
 
     public FrogMovement(){
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -21,7 +23,8 @@ public class FrogMovement extends MainActivity{
         sensorManager.registerListener(new SensorEventListener() {
             @Override
             public void onSensorChanged(SensorEvent event) {
-
+                xFrogSpeed = event.values[0];
+                yFrogSpeed = event.values[1];
             }
 
             @Override
@@ -30,7 +33,5 @@ public class FrogMovement extends MainActivity{
             }
         }, sensor, SensorManager.SENSOR_DELAY_NORMAL);
     }
-
-    public int setFrogSpeed
 
 }

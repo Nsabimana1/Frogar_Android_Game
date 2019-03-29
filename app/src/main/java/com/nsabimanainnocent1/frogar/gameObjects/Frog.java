@@ -1,7 +1,5 @@
 package com.nsabimanainnocent1.frogar.gameObjects;
 
-import com.nsabimanainnocent1.frogar.gameObjects.Object;
-
 public class Frog implements Object {
     private long x;
     private long y;
