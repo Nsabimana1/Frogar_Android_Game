@@ -1,17 +1,14 @@
 package com.nsabimanainnocent1.frogar.movement;
 
-import android.app.Activity;
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import com.nsabimanainnocent1.frogar.MainActivity;
-import com.nsabimanainnocent1.frogar.gameObjects.Frog;
+import com.nsabimanainnocent1.frogar.GameScreen;
 
-import android.content.Context.*;
 
-public class FrogMovement extends MainActivity{
+public class FrogMovement extends GameScreen{
     private SensorManager sensorManager;
     private Sensor sensor;
     public float xFrogSpeed;
