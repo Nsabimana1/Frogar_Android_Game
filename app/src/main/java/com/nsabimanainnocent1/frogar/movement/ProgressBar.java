@@ -1,4 +1,4 @@
-package com.nsabimanainnocent1.frogar;
+package com.nsabimanainnocent1.frogar.movement;
 
 public class ProgressBar {
     public int  health = 4;

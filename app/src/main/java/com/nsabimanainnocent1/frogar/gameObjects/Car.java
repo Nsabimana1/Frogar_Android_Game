@@ -8,6 +8,8 @@ public class Car implements Object {
     private long velX;
     private long velY;
     private final int speedFactor = 2;
+    private final int startingX = 0;
+    private final int startingY = 0;
 
     public Car(long x, long y, long velX, long velY){
         this.x = x;
@@ -19,6 +21,7 @@ public class Car implements Object {
 
     @Override
     public void move() {
+
         this.x += velX;
         this.y += velY;
     }
@@ -42,6 +45,11 @@ public class Car implements Object {
     }
 
     private void moveInRange(Integer width, Integer height){
-
+        if (this.x >= width || this.x <= 0){
+            this.x = startingX;
+        }
+        if (this.y >=  height || this.y <= 0){
+            this.y = startingY;
+        }
     }
 }
