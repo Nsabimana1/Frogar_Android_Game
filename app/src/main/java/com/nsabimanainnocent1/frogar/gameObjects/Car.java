@@ -1,29 +1,33 @@
 package com.nsabimanainnocent1.frogar.gameObjects;
 
+import android.widget.ImageView;
+
 import com.nsabimanainnocent1.frogar.gameObjects.Object;
 
 public class Car implements Object {
-    private long x;
-    private long y;
-    private long velX;
-    private long velY;
-    private final int speedFactor = 2;
-    private final int startingX = 0;
-    private final int startingY = 0;
+    private float x, y;
+    private float velX, velY;
+    private float startingPositionX, startingPositionY;
+    private final float initialVelX = 2, initialVelY = 2;
+    private int speedFactor = 2;
+    private ImageView carImage;
 
-    public Car(long x, long y, long velX, long velY){
+    public Car(float x, float y, ImageView carImage){
         this.x = x;
-        this.y = x;
-        this.velX = velX;
-        this.velY = velY;
+        this.y = y;
+        this.velX = initialVelX;
+        this.velY = initialVelY;
+        startingPositionX = carImage.getX();
+        startingPositionY = carImage.getY();
+        this.carImage = carImage;
     }
-
 
     @Override
     public void move() {
-
         this.x += velX;
         this.y += velY;
+        carImage.setTranslationX(this.x);
+        carImage.setTranslationY(this.y);
     }
 
     @Override
@@ -44,12 +48,17 @@ public class Car implements Object {
         this.velX /= speedFactor;
     }
 
+    public void resetPosition(){
+        this.x = startingPositionX;
+        this.y = startingPositionY;
+    }
+
     private void moveInRange(Integer width, Integer height){
         if (this.x >= width || this.x <= 0){
-            this.x = startingX;
+            this.x = startingPositionX;
         }
         if (this.y >=  height || this.y <= 0){
-            this.y = startingY;
+            this.y = startingPositionY;
         }
     }
 }

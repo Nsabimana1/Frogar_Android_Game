@@ -1,26 +1,30 @@
 package com.nsabimanainnocent1.frogar.gameObjects;
 
+import android.widget.ImageView;
+
 import com.nsabimanainnocent1.frogar.movement.FrogMovement;
 
 public class Frog implements Object {
-    private long x;
-    private long y;
-    private long xVelocity;
-    private long yVelocity;
+    private float x;
+    private float y;
+    private float xVelocity;
+    private float yVelocity;
+    private ImageView frogImage;
 
-    public Frog(long x, long y){
+    public Frog(float x, float y, ImageView frogImage){
         this.x = x;
         this.y = y;
+        this.frogImage = frogImage;
     }
 
-    FrogMovement frogMovement = new FrogMovement();
+//    FrogMovement frogMovement = new FrogMovement();
 
     @Override
     public void move() {
-        xVelocity = frogMovement.getXVelocity();
-        xSpeedCap();
-        yVelocity = frogMovement.getYVelocity();
-        ySpeedCap();
+//        xVelocity = frogMovement.getXVelocity();
+//        xSpeedCap();
+//        yVelocity = frogMovement.getYVelocity();
+//        ySpeedCap();
     }
 
     @Override
@@ -48,19 +52,19 @@ public class Frog implements Object {
     }
 
     public void xSpeedCap(){
-        if(frogMovement.getXVelocity() >= 50){
-            setXVelocity(50);
-        }else{
-
-        }
+//        if(frogMovement.getXVelocity() >= 50){
+//            setXVelocity(50);
+//        }else{
+//
+//        }
     }
 
     public void ySpeedCap(){
-        if(frogMovement.getYVelocity() >= 50){
-            setYVelocity(50);
-        }else{
-
-        }
+//        if(frogMovement.getYVelocity() >= 50){
+//            setYVelocity(50);
+//        }else{
+//
+//        }
     }
 
 }
