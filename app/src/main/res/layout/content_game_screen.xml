@@ -23,15 +23,15 @@
         android:id="@+id/Restart_Button"
         android:layout_width="93dp"
         android:layout_height="55dp"
-        android:layout_marginEnd="96dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="56dp"
         android:text="Restart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
 
     <FrameLayout
-        android:layout_width="600dp"
+        android:layout_width="731dp"
         android:layout_height="103dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -40,10 +40,10 @@
         android:background="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.13"
+        app:layout_constraintHorizontal_bias="0.434"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.014" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/frameLayout"
@@ -60,22 +60,21 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="388dp"
-            android:layout_height="414dp"
+            android:layout_width="370dp"
+            android:layout_height="521dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.545"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.777"
             app:srcCompat="@drawable/roadcroped" />
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/Frog_Player"
             android:layout_width="69dp"
             android:layout_height="105dp"
             android:layout_marginStart="8dp"
@@ -89,6 +88,31 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.897"
             app:srcCompat="@drawable/frog" />
+
+        <ImageView
+            android:id="@+id/Car"
+            android:layout_width="84dp"
+            android:layout_height="96dp"
+            android:layout_marginTop="56dp"
+            android:cropToPadding="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.333"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/car_sprite"
+            tools:rotation="90" />
+
+        <ImageView
+            android:id="@+id/Car2"
+            android:layout_width="97dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="372dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.631"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView"
+            app:srcCompat="@drawable/car2"
+            tools:rotation="270" />
     </android.support.constraint.ConstraintLayout>
 
 
@@ -103,10 +127,10 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.402"
+        app:layout_constraintHorizontal_bias="0.078"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.096" />
+        app:layout_constraintVertical_bias="0.103" />
 
     <TextView
         android:id="@+id/heathTitle"
