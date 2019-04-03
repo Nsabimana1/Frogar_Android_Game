@@ -17,7 +17,12 @@ public class Frog implements Object {
         this.frogImage = frogImage;
     }
 
-//    FrogMovement frogMovement = new FrogMovement();
+    public void changePosition(float x, float y){
+        this.x = x;
+        this.y = y;
+        frogImage.setTranslationX(this.x);
+        frogImage.setTranslationY(this.y);
+    }
 
     @Override
     public void move() {

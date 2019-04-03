@@ -25,7 +25,7 @@ public class Car implements Object {
     @Override
     public void move() {
         this.x += velX;
-        this.y += velY;
+//        this.y += velY;
         carImage.setTranslationX(this.x);
         carImage.setTranslationY(this.y);
     }

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Dimension;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,6 +29,14 @@ public class GameScreen extends AppCompatActivity {
         setSupportActionBar(toolbar);
         setComponents();
         initializeObjects();
+
+        playButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                game.starGame();
+            }
+        });
+
 
 //        imageX = imageViewRoad.getX();
 //        imageY = imageViewRoad.getY();
@@ -61,7 +70,7 @@ public class GameScreen extends AppCompatActivity {
     private void initializeObjects(){
         game = new Game();
         game.setFrog(new Frog(frogImage.getX(), frogImage.getY(), frogImage));
-        game.setFrogMovement();
+        game.setFrogMovement(this);
         game.addCar(new Car(carImage1.getX(), carImage1.getY(), carImage1));
         game.addCar(new Car(carImage2.getX(), carImage2.getY(), carImage2));
         game.setCarMovement();

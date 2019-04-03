@@ -71,6 +71,7 @@
             app:layout_constraintHorizontal_bias="0.545"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.513"
             app:srcCompat="@drawable/roadcroped" />
 
         <ImageView
@@ -83,10 +84,10 @@
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.027"
+            app:layout_constraintHorizontal_bias="0.454"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.897"
+            app:layout_constraintVertical_bias="0.589"
             app:srcCompat="@drawable/frog" />
 
         <ImageView
@@ -96,7 +97,7 @@
             android:layout_marginTop="56dp"
             android:cropToPadding="true"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.333"
+            app:layout_constraintHorizontal_bias="0.297"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/car_sprite"
@@ -104,13 +105,13 @@
 
         <ImageView
             android:id="@+id/car2"
-            android:layout_width="97dp"
-            android:layout_height="46dp"
+            android:layout_width="87dp"
+            android:layout_height="59dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.631"
+            app:layout_constraintHorizontal_bias="0.66"
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/car2"
-            tools:layout_editor_absoluteY="417dp"
+            tools:layout_editor_absoluteY="386dp"
             tools:rotation="270" />
     </android.support.constraint.ConstraintLayout>
 

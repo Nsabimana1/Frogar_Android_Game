@@ -1,5 +1,7 @@
 package com.nsabimanainnocent1.frogar.movement;
 
+import android.content.Context;
+
 import com.nsabimanainnocent1.frogar.gameObjects.Car;
 import com.nsabimanainnocent1.frogar.gameObjects.Frog;
 
@@ -26,8 +28,8 @@ public class Game {
         this.carMovement = new CarMovement(cars);
     }
 
-    public void setFrogMovement() {
-        this.frogMovement = new FrogMovement(frog);
+    public void setFrogMovement(Context context) {
+        this.frogMovement = new FrogMovement(frog, context);
     }
 
     public void setRoadDimension(Integer width, Integer height){
@@ -36,6 +38,8 @@ public class Game {
 
     public void starGame(){
         this.carMovement.moveCars();
-        carMovement.start();
+        this.frogMovement.markActivate();
+        this.frogMovement.activateFrog();
+
     }
 }
