@@ -1,11 +1,13 @@
 package com.nsabimanainnocent1.frogar.movement;
 
+import android.app.Activity;
 import android.content.Context;
 
 import com.nsabimanainnocent1.frogar.gameObjects.Car;
 import com.nsabimanainnocent1.frogar.gameObjects.Frog;
 
 import java.util.ArrayList;
+import java.util.Timer;
 
 public class Game {
     private ArrayList<Car> cars = new ArrayList<>();
@@ -24,7 +26,7 @@ public class Game {
         this.frog = frog;
     }
 
-    public void setCarMovement() {
+    public void setCarMovement(Activity where) {
         this.carMovement = new CarMovement(cars);
     }
 
@@ -37,7 +39,10 @@ public class Game {
     }
 
     public void starGame(){
-        this.carMovement.moveCars();
+//        this.carMovement.movement();
+//        Timer t = new Timer();
+//        t.scheduleAtFixedRate(carMovement, 0, 1000);
+        this.carMovement.initiateMovement(carMovement);
         this.frogMovement.markActivate();
         this.frogMovement.activateFrog();
 

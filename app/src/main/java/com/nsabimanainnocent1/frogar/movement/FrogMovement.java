@@ -46,6 +46,8 @@ public class FrogMovement{
         this.isActive = false;
     }
 
+
+
 //    public long getXVelocity(){
 //        return Math.round(xFrogSpeed);
 //    }

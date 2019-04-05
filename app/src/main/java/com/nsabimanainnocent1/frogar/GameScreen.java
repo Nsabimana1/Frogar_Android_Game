@@ -21,6 +21,8 @@ public class GameScreen extends AppCompatActivity {
     private Float imageX = 0f, imageY = 0f;
     private Game game;
 
+    private TextView testingView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +36,9 @@ public class GameScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 game.starGame();
+                imageX = carImage1.getX();
+                imageY = carImage1.getY();
+                testingView.setText(imageX.toString() + ", " + imageY.toString());
             }
         });
 
@@ -65,6 +70,8 @@ public class GameScreen extends AppCompatActivity {
         restartButton = findViewById(R.id.Restart_Button);
         carImage1 = findViewById(R.id.car1);
         carImage2 = findViewById(R.id.car2);
+
+        testingView = findViewById(R.id.testing);
     }
 
     private void initializeObjects(){
@@ -73,7 +80,7 @@ public class GameScreen extends AppCompatActivity {
         game.setFrogMovement(this);
         game.addCar(new Car(carImage1.getX(), carImage1.getY(), carImage1));
         game.addCar(new Car(carImage2.getX(), carImage2.getY(), carImage2));
-        game.setCarMovement();
+        game.setCarMovement(this);
         game.setRoadDimension(imageViewRoad.getHeight(), imageViewRoad.getWidth());
     }
 
