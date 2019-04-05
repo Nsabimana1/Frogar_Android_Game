@@ -42,7 +42,7 @@ public class FrogMovement{
         this.isActive = true;
     }
 
-    public void markDisActive(){
+    public void markDeActivate(){
         this.isActive = false;
     }
 

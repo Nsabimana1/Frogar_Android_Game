@@ -5,16 +5,18 @@ import android.support.annotation.Dimension;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nsabimanainnocent1.frogar.gameObjects.Car;
 import com.nsabimanainnocent1.frogar.gameObjects.Frog;
+import com.nsabimanainnocent1.frogar.movement.CollisionDetector;
 import com.nsabimanainnocent1.frogar.movement.Game;
 
 public class GameScreen extends AppCompatActivity {
-    private ImageView imageViewRoad, frogImage, carImage1, carImage2;
+    public ImageView imageViewRoad, frogImage, carImage1, carImage2;
     private TextView healthTitle, scoreTitle, scoreValueView;
     private Button playButton, restartButton;
     private Integer scoreValue = 0;
@@ -31,6 +33,9 @@ public class GameScreen extends AppCompatActivity {
         setSupportActionBar(toolbar);
         setComponents();
         initializeObjects();
+
+
+
 
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,5 +88,6 @@ public class GameScreen extends AppCompatActivity {
         game.setCarMovement(this);
         game.setRoadDimension(imageViewRoad.getHeight(), imageViewRoad.getWidth());
     }
+
 
 }

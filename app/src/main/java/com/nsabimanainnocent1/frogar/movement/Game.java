@@ -38,6 +38,7 @@ public class Game {
         this.roadWidth = width; this.roadHeight = height;
     }
 
+
     public void starGame(){
 //        this.carMovement.movement();
 //        Timer t = new Timer();

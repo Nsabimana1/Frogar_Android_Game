@@ -22,7 +22,8 @@
 
     <include
         layout="@layout/content_game_screen"
-        android:layout_height="374dp" />
+        android:layout_height="374dp"
+        android:layout_width="" />
 
     <!--<android.support.design.widget.FloatingActionButton-->
         <!--android:id="@+id/fab"-->
