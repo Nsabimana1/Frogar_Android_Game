@@ -22,6 +22,11 @@ public class Car implements Object {
         this.carImage = carImage;
     }
 
+    public float getCarX(){return x;}
+    public float getCarY(){return y;}
+    public float getCarWidth(){return carImage.getWidth();}
+    public float getCarHeight(){return carImage.getHeight();}
+
     @Override
     public void move() {
 //        this.x += velX;
