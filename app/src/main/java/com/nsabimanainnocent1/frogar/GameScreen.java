@@ -35,8 +35,6 @@ public class GameScreen extends AppCompatActivity {
         initializeObjects();
 
 
-
-
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
