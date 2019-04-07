@@ -41,9 +41,13 @@ public class CollisionDetector {
         float frogHeight = frog.getFrogHieght() - modifiedHitbox;
         float frogRightCorners = frogX + frogWidth;
         float frogBottomCorners = frogY + frogHeight;
-        if((frogX >= carX && frogX <= carRightCorners) && (frogY >= carY && frogY <= carBottomCorners)){
+        if((frogX >= carX && frogX <= carRightCorners) && (frogY >= carY && frogY <= carBottomCorners)){ //top left of frog is overlapping car
             isOverlapping = true;
-        } else if ((frogRightCorners >= carX && frogRightCorners <= carRightCorners) && (frogY >= carY && frogY <= carBottomCorners)) {
+        }else if((frogRightCorners >= carX && frogRightCorners <= carRightCorners) && (frogY >= carY && frogY <= carBottomCorners)) {//top right of frog is overlapping car
+            isOverlapping = true;
+        }else if((frogX >= carX && frogX <= carRightCorners) && (frogBottomCorners >= carY && frogBottomCorners <= carBottomCorners)){
+            isOverlapping = true;
+        }else if((frogRightCorners >= carX && frogRightCorners <= carRightCorners) && (frogBottomCorners >= carY && frogBottomCorners <= carBottomCorners)){
             isOverlapping = true;
         }
         return isOverlapping;
