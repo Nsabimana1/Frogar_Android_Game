@@ -28,14 +28,6 @@ public class GameStateUpdater {
     }
 
     public void updateUI(){
-
-        intent.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                restartGame();
-            }
-        });
-
         this.scoreView.setText(gameScore.toString());
         this.healthView.setText(healthScore.toString());
         this.gameLevelView.setText(gameLevelValue.toString());
