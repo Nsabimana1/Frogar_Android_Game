@@ -21,11 +21,13 @@
     </android.support.design.widget.AppBarLayout>
 
     <include
-        layout="@layout/content_game_screen" />
-        //android:layout_height="374dp"
+        android:id="@+id/include"
+        layout="@layout/content_game_screen" /><![CDATA[
+
+    //android:layout_height="374dp"
         //android:layout_width="" />
 
-    <!--<android.support.design.widget.FloatingActionButton-->
+    ]]><!--<android.support.design.widget.FloatingActionButton-->
         <!--android:id="@+id/fab"-->
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content"-->

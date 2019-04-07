@@ -14,8 +14,8 @@
         android:id="@+id/Play_Button"
         android:layout_width="93dp"
         android:layout_height="56dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginBottom="24dp"
         android:text="Play"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -24,8 +24,8 @@
         android:id="@+id/Restart_Button"
         android:layout_width="93dp"
         android:layout_height="55dp"
-        android:layout_marginEnd="52dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="28dp"
         android:text="Restart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -42,10 +42,10 @@
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.71"
+        app:layout_constraintHorizontal_bias="0.569"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.977" />
+        app:layout_constraintVertical_bias="0.422" />
 
     <FrameLayout
         android:id="@+id/frameLayout2"
@@ -80,8 +80,8 @@
 
         <ImageView
             android:id="@+id/imageViewRoad"
-            android:layout_width="388dp"
-            android:layout_height="415dp"
+            android:layout_width="406dp"
+            android:layout_height="502dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
@@ -92,7 +92,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.513"
-            app:srcCompat="@drawable/roadcroped" />
+            app:srcCompat="@drawable/cropped_road2" />
 
         <ImageView
             android:id="@+id/fromImage"
@@ -104,18 +104,18 @@
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.48"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.654"
+            app:layout_constraintVertical_bias="1.0"
             app:srcCompat="@drawable/frog" />
 
         <ImageView
             android:id="@+id/car1"
             android:layout_width="90dp"
             android:layout_height="96dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="204dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="156dp"
             android:cropToPadding="true"
             app:layout_constraintEnd_toEndOf="@+id/imageViewRoad"
             app:layout_constraintTop_toTopOf="parent"
@@ -126,13 +126,25 @@
             android:id="@+id/car2"
             android:layout_width="87dp"
             android:layout_height="59dp"
-            android:layout_marginBottom="48dp"
+            android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.66"
+            app:layout_constraintHorizontal_bias="0.81"
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/car2"
             tools:rotation="270" />
+
+        <ImageView
+            android:id="@+id/car3"
+            android:layout_width="90dp"
+            android:layout_height="96dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="256dp"
+            android:cropToPadding="true"
+            app:layout_constraintEnd_toEndOf="@+id/imageViewRoad"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/car3"
+            tools:rotation="90" />
     </android.support.constraint.ConstraintLayout>
 
 
