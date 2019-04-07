@@ -34,6 +34,7 @@ public class GameScreen extends AppCompatActivity {
         initializeObjects();
 
 
+
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,6 +88,13 @@ public class GameScreen extends AppCompatActivity {
         game.setCarMovement();
         game.setRoadDimension(imageViewRoad.getHeight(), imageViewRoad.getWidth());
         game.setCollisionDetector();
+    }
+
+    public void resetCarLocation(ImageView car, ImageView parent){
+        float topOfCar = car.getY();
+        if(topOfCar == parent.getHeight()){
+            car.setY(0);
+        }
     }
 
 }
