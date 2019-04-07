@@ -97,4 +97,6 @@ public class GameScreen extends AppCompatActivity {
         }
     }
 
+    public static void updateUI(){
+    }
 }

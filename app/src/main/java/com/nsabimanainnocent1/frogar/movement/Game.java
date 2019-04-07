@@ -2,6 +2,7 @@ package com.nsabimanainnocent1.frogar.movement;
 
 import android.content.Context;
 
+import com.nsabimanainnocent1.frogar.GameScreen;
 import com.nsabimanainnocent1.frogar.gameObjects.Car;
 import com.nsabimanainnocent1.frogar.gameObjects.Frog;
 
