@@ -32,7 +32,7 @@
 
     <TextView
         android:id="@+id/testing"
-        android:layout_width="147dp"
+        android:layout_width="103dp"
         android:layout_height="46dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="576dp"
@@ -47,6 +47,7 @@
         app:layout_constraintVertical_bias="0.977" />
 
     <FrameLayout
+        android:id="@+id/frameLayout2"
         android:layout_width="731dp"
         android:layout_height="103dp"
         android:layout_marginStart="8dp"
@@ -56,10 +57,12 @@
         android:background="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.434"
+        app:layout_constraintHorizontal_bias="0.416"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.014">
+
+    </FrameLayout>
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/frameLayout"
@@ -136,17 +139,17 @@
         android:id="@+id/progressHealth"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="126dp"
-        android:layout_height="28dp"
+        android:layout_height="20dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="200dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.078"
+        app:layout_constraintHorizontal_bias="0.272"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.103" />
+        app:layout_constraintVertical_bias="0.09" />
 
     <TextView
         android:id="@+id/heathTitle"
@@ -159,10 +162,26 @@
         android:text="Health Level"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.132"
+        app:layout_constraintHorizontal_bias="0.078"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.031" />
+
+    <TextView
+        android:id="@+id/gameLevel"
+        android:layout_width="81dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="556dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.563"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.333" />
 
     <TextView
         android:id="@+id/scoreTitle"

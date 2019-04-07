@@ -13,19 +13,22 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class CarMovement extends TimerTask {
-    private long last = 0;
-    private long Frames_Per_Second = 5L;
-    private long Interval = 1000000000L / Frames_Per_Second;
+public class CarMovement extends TimerTask{
+//    private long last = 0;
+//    private long Frames_Per_Second = 5L;
+//    private long Interval = 1000000000L / Frames_Per_Second;
     private ArrayList<Car> allCars;
     private Timer timer = new Timer();
     private Date date = new Date();
     private boolean isMoving;
+    private long Time_Interval = 10;
+    private GameStateUpdater gameStateUpdater;
 
 
-    public CarMovement(ArrayList<Car> cars) {
+    public CarMovement(ArrayList<Car> cars, GameStateUpdater gameStateUpdater) {
         this.allCars = cars;
         this.isMoving = false;
+        this.gameStateUpdater = gameStateUpdater;
     }
 
     public void moveCars() {
@@ -44,7 +47,7 @@ public class CarMovement extends TimerTask {
         if(!this.isMoving) {
             this.isMoving = true;
             Timer t = new Timer();
-            t.scheduleAtFixedRate(activity, 0, 10);
+            t.scheduleAtFixedRate(activity, 0, this.Time_Interval);
         }
     }
 
