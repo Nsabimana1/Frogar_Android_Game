@@ -37,6 +37,8 @@ public class Game {
 
     public void setRoadDimension(Integer width, Integer height){
         this.roadWidth = width; this.roadHeight = height;
+        carMovement.setRoadWidth(width);
+        carMovement.setRoadHeight(height);
     }
 
     public void setCollisionDetector(){

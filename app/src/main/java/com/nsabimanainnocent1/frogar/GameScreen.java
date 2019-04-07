@@ -18,7 +18,7 @@ public class GameScreen extends AppCompatActivity {
     private TextView healthTitleView, scoreTitleView, scoreValueView, gameLevelView;
     private Button playButton, restartButton;
     private Integer scoreValue = 0;
-    private Float imageX = 0f, imageY = 0f;
+    private Integer imageX = 0, imageY = 0;
     private Game game;
     private GameStateUpdater gameStateUpdater;
 
@@ -38,8 +38,8 @@ public class GameScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 game.starGame();
-                imageX = carImage1.getX();
-                imageY = carImage1.getY();
+                imageX = imageViewRoad.getHeight();
+                imageY = imageViewRoad.getWidth();
                 testingView.setText(imageX.toString() + ", " + imageY.toString());
             }
         });
@@ -82,8 +82,8 @@ public class GameScreen extends AppCompatActivity {
         game = new Game(gameStateUpdater);
         game.setFrog(new Frog(frogImage.getX(), frogImage.getY(), frogImage));
         game.setFrogMovement(this);
-        game.addCar(new Car(carImage1.getX(), carImage1.getY(), carImage1));
-        game.addCar(new Car(carImage2.getX(), carImage2.getY(), carImage2));
+        game.addCar(new Car(carImage1));
+        game.addCar(new Car(carImage2));
         game.setCarMovement();
         game.setRoadDimension(imageViewRoad.getHeight(), imageViewRoad.getWidth());
         game.setCollisionDetector();
