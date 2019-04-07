@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class CollisionDetector {
     private ArrayList<Car> allCars;
     private Frog frog;
-    private boolean isCollided;
+    private boolean isCollided = false;
     private Integer nCollisions;
     public static final int modifiedHitbox = 5;
 
@@ -49,11 +49,15 @@ public class CollisionDetector {
         return isOverlapping;
     }
 
-    public void checkForCollision(){
-
-
+    public boolean checkWhetherCollided(){
+        for(Car car: allCars) {
+            if (isCarAndFrogOverlap(car, frog)) {
+                isCollided = true;
+                break;
+            }else{
+                isCollided = false;
+            }
+        }
+        return  isCollided;
     }
-
-
-
 }

@@ -1,7 +1,6 @@
 package com.nsabimanainnocent1.frogar;
 
 import android.os.Bundle;
-import android.support.annotation.Dimension;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -12,14 +11,16 @@ import android.widget.TextView;
 import com.nsabimanainnocent1.frogar.gameObjects.Car;
 import com.nsabimanainnocent1.frogar.gameObjects.Frog;
 import com.nsabimanainnocent1.frogar.movement.Game;
+import com.nsabimanainnocent1.frogar.movement.GameStateUpdater;
 
 public class GameScreen extends AppCompatActivity {
     public ImageView imageViewRoad, frogImage, carImage1, carImage2;
-    private TextView healthTitle, scoreTitle, scoreValueView;
+    private TextView healthTitleView, scoreTitleView, scoreValueView, gameLevelView;
     private Button playButton, restartButton;
     private Integer scoreValue = 0;
     private Float imageX = 0f, imageY = 0f;
     private Game game;
+    private GameStateUpdater gameStateUpdater;
 
     private TextView testingView;
 
@@ -63,8 +64,8 @@ public class GameScreen extends AppCompatActivity {
 
     private void setComponents(){
         imageViewRoad = findViewById(R.id.imageViewRoad);
-        healthTitle = findViewById(R.id.heathTitle);
-        scoreTitle = findViewById(R.id.scoreTitle);
+        healthTitleView = findViewById(R.id.heathTitle);
+        scoreTitleView = findViewById(R.id.scoreTitle);
         scoreValueView = findViewById(R.id.scoreValue);
         frogImage = findViewById(R.id.fromImage);
         playButton = findViewById(R.id.Play_Button);
@@ -73,17 +74,19 @@ public class GameScreen extends AppCompatActivity {
         carImage2 = findViewById(R.id.car2);
 
         testingView = findViewById(R.id.testing);
+        gameLevelView = findViewById(R.id.gameLevel);
     }
 
     private void initializeObjects(){
-        game = new Game();
+        gameStateUpdater = new GameStateUpdater(scoreValueView, healthTitleView, gameLevelView);
+        game = new Game(gameStateUpdater);
         game.setFrog(new Frog(frogImage.getX(), frogImage.getY(), frogImage));
         game.setFrogMovement(this);
         game.addCar(new Car(carImage1.getX(), carImage1.getY(), carImage1));
         game.addCar(new Car(carImage2.getX(), carImage2.getY(), carImage2));
-        game.setCarMovement(this);
+        game.setCarMovement();
         game.setRoadDimension(imageViewRoad.getHeight(), imageViewRoad.getWidth());
+        game.setCollisionDetector();
     }
-
 
 }
