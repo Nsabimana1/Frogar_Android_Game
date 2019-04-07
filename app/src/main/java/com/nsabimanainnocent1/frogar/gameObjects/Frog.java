@@ -20,7 +20,7 @@ public class Frog implements Object {
     public float getFrogX(){return x;}
     public float getFrogY(){return y;}
     public float getFrogWidth(){return frogImage.getWidth();}
-    public float getFrogHieght(){return frogImage.getHeight();}
+    public float getFrogHeight(){return frogImage.getHeight();}
 
     public void changePosition(float x, float y){
         this.x = x;

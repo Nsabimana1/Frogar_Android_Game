@@ -79,17 +79,18 @@
 
         <ImageView
             android:id="@+id/imageViewRoad"
-            android:layout_width="342dp"
-            android:layout_height="391dp"
+            android:layout_width="388dp"
+            android:layout_height="415dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.545"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.513"
             app:srcCompat="@drawable/roadcroped" />
 
         <ImageView
@@ -112,13 +113,10 @@
             android:id="@+id/car1"
             android:layout_width="90dp"
             android:layout_height="96dp"
-            android:layout_marginTop="120dp"
             android:cropToPadding="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.419"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/car_sprite"
+            tools:layout_editor_absoluteX="90dp"
+            tools:layout_editor_absoluteY="56dp"
             tools:rotation="90" />
 
         <ImageView
@@ -126,10 +124,10 @@
             android:layout_width="87dp"
             android:layout_height="59dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.732"
+            app:layout_constraintHorizontal_bias="0.66"
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/car2"
-            tools:layout_editor_absoluteY="258dp"
+            tools:layout_editor_absoluteY="386dp"
             tools:rotation="270" />
     </android.support.constraint.ConstraintLayout>
 
