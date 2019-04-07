@@ -56,7 +56,7 @@ public class CollisionDetector {
         return isOverlapping;
     }
 
-    public boolean checkWhetherCollided(){
+    boolean checkWhetherCollided(){
         for(Car car: allCars) {
             if (isCarAndFrogOverlap(car, frog)) {
                 isCollided = true;

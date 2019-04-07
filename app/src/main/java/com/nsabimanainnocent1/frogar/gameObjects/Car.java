@@ -12,14 +12,14 @@ public class Car implements Object {
     private int speedFactor = 2;
     private ImageView carImage;
 
-    public Car(float x, float y, ImageView carImage){
-        this.x = x;
-        this.y = y;
+    public Car(ImageView carImage){
         this.velX = initialVelX;
         this.velY = initialVelY;
         startingPositionX = carImage.getX();
         startingPositionY = carImage.getY();
         this.carImage = carImage;
+        this.x = startingPositionX;
+        this.y = startingPositionY;
     }
 
     public float getCarX(){return x;}
@@ -35,9 +35,16 @@ public class Car implements Object {
         carImage.setTranslationY(this.y);
     }
 
-    public void moveUp(){
-        this.y = velY;
+    public void moveUp(Integer width, Integer height){
+        this.y -= velY;
         carImage.setTranslationY(this.y);
+        setMovementRange(width, height);
+    }
+
+    public void moveDown(Integer width, Integer height){
+        this.y += velY;
+        carImage.setTranslationY(this.y);
+        setMovementRange(width, height);
     }
 
     @Override
@@ -63,11 +70,11 @@ public class Car implements Object {
         this.y = startingPositionY;
     }
 
-    private void moveInRange(Integer width, Integer height){
-        if (this.x >= width || this.x <= 0){
-            this.x = startingPositionX;
-        }
-        if (this.y >=  height || this.y <= 0){
+    private void setMovementRange(Integer width, Integer height){
+//        if (this.x <= width || this.x <= this.startingPositionX){
+//            this.x = startingPositionX;
+//        }
+        if (this.y > startingPositionY + 20 || this.y > this.startingPositionY){
             this.y = startingPositionY;
         }
     }

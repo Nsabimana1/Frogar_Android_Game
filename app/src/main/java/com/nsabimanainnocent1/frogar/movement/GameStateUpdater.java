@@ -29,4 +29,13 @@ public class GameStateUpdater {
         this.healthView.setText(healthScore.toString());
         this.gameLevelView.setText(gameLevelValue.toString());
     }
+
+    public void increaseScore(){
+        this.gameScore += 2;
+    }
+
+    public void changeGameState(){
+        this.reduceHealth();
+        this.updateUI();
+    }
 }

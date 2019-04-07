@@ -24,6 +24,8 @@ public class CarMovement extends TimerTask{
     private long Time_Interval = 10;
     private GameStateUpdater gameStateUpdater;
 
+    private Integer roadWidth = 0, roadHeight = 0;
+
 
     public CarMovement(ArrayList<Car> cars, GameStateUpdater gameStateUpdater) {
         this.allCars = cars;
@@ -31,16 +33,29 @@ public class CarMovement extends TimerTask{
         this.gameStateUpdater = gameStateUpdater;
     }
 
+    public void setRoadWidth(Integer roadWidth){this.roadWidth = roadWidth;}
+    public void setRoadHeight(Integer roadHeight){this.roadHeight = roadHeight;}
+
     public void moveCars() {
-        for (Car car : allCars) {
-            car.move();
+        for(int i = 0; i <allCars.size(); i++){
+            if (i % 2 == 0) {
+                allCars.get(i).moveUp(roadWidth, roadHeight);
+            }else {
+                allCars.get(i).moveDown(roadWidth, roadHeight);
+            }
+
+            Log.i("Car " + allCars.get(i), "has is at position " + allCars.get(i).getCarY());
         }
+//        for (Car car : allCars) {
+//            car.move();
+//        }
     }
 
     @Override
     public void run() {
         Log.i("CarMovement", "Hi, I moved!");
         moveCars();
+        this.gameStateUpdater.changeGameState();
     }
 
     public void initiateMovement(TimerTask activity){
@@ -68,10 +83,10 @@ public class CarMovement extends TimerTask{
 
 //    }
 
-    @Override
-    public long scheduledExecutionTime(){
-        return super.scheduledExecutionTime();
-    }
+//    @Override
+//    public long scheduledExecutionTime(){
+//        return super.scheduledExecutionTime();
+//    }
 
 
 }
