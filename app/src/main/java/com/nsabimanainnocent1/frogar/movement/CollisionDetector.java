@@ -24,19 +24,19 @@ public class CollisionDetector {
 
     private Rect frogToRect(Frog frog){
         Rect frogRect = new Rect();
-        frogRect.left = (int)frog.getFrogLeft();
-        frogRect.right = (int)frog.getFrogRight();
-        frogRect.top = (int)frog.getFrogTop();
-        frogRect.bottom = (int)frog.getFrogBottom();
+        frogRect.left = frog.getFrogLeft();
+        frogRect.right = frog.getFrogRight();
+        frogRect.top = frog.getFrogTop();
+        frogRect.bottom = frog.getFrogBottom();
         return frogRect;
     }
 
     private Rect carToRect(Car car){
         Rect carRect = new Rect();
-        carRect.left = (int)car.getFrogLeft();
-        carRect.right = (int)car.getFrogRight();
-        carRect.top = (int)car.getFrogTop();
-        carRect.bottom = (int)car.getFrogBottom();
+        carRect.left = car.getCarLeft();
+        carRect.right = car.getCarRight();
+        carRect.top = car.getCarTop();
+        carRect.bottom = car.getCarBottom();
         return carRect;
     }
 
@@ -72,10 +72,10 @@ public class CollisionDetector {
     } */
 
     boolean checkWhetherCollided(){
+        Rect frogRect = frogToRect(frog);
         for(Car car: allCars) {
             Rect carRect = carToRect(car);
-            Rect frogRect = frogToRect(frog);
-            if (frogRect.intersect(carRect)) {
+            if (Rect.intersects(frogRect,carRect)) {
                 isCollided = true;
                 break;
             }else{
