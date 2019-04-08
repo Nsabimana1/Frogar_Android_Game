@@ -120,6 +120,7 @@ public class GameScreen extends AppCompatActivity {
             scoreValue -= 1;
         }else if(collision && lives == 0) {
             displayToast("I am read for the next level");
+            showDialogBox();
             AlertDialog.Builder loseAlert = new AlertDialog.Builder(GameScreen.this);
             loseAlert.setMessage("Your Score was:" + scoreValue+". Would you like to try again?")
                     .setCancelable(false)
@@ -207,5 +208,28 @@ public class GameScreen extends AppCompatActivity {
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
+    }
+
+
+    public void showDialogBox() {
+        // Use the Builder class for convenient dialog construction
+        AlertDialog.Builder builder = new AlertDialog.Builder(GameScreen.this);
+        builder.setCancelable(false);
+        builder.setTitle("Game Status");
+        builder.setMessage("Would like to go to the next level?");
+        builder.setPositiveButton("Accept", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                /// Todo write code here
+            }
+        })
+                .setNegativeButton("Quit", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        /// Todo write code here
+                    }
+                });
+        // Create the AlertDialog object and return it
+        builder.create().show();
     }
 }
