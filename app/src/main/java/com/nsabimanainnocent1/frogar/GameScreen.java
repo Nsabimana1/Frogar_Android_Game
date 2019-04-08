@@ -16,7 +16,7 @@ import com.nsabimanainnocent1.frogar.movement.Game;
 import com.nsabimanainnocent1.frogar.movement.GameStateUpdater;
 
 public class GameScreen extends AppCompatActivity {
-    public ImageView imageViewRoad, frogImage, carImage1, carImage2,pBFull, pBHalf, pbEmpty;
+    public ImageView imageViewRoad, frogImage, carImage1, carImage2, carImage3, pBFull, pBHalf, pbEmpty;
     private TextView healthTitleView, scoreTitleView, scoreValueView, gameLevelView;
     private Button playButton, restartButton;
     private Integer scoreValue = 0;
@@ -61,16 +61,6 @@ public class GameScreen extends AppCompatActivity {
 //        scoreValueView.setText(imageX.toString());
 //        imageViewRoad.setX(new Float(4555));
 
-
-
-//        FloatingActionButton fab = findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
     }
 
     private void setComponents(){
@@ -86,6 +76,7 @@ public class GameScreen extends AppCompatActivity {
         restartButton = findViewById(R.id.Restart_Button);
         carImage1 = findViewById(R.id.car1);
         carImage2 = findViewById(R.id.car2);
+        carImage3 = findViewById(R.id.car3);
 
         testingView = findViewById(R.id.testing);
         gameLevelView = findViewById(R.id.gameLevel);
