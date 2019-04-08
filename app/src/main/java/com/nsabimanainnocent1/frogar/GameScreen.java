@@ -89,6 +89,7 @@ public class GameScreen extends AppCompatActivity {
         game.setFrogMovement(this);
         game.addCar(new Car(carImage1));
         game.addCar(new Car(carImage2));
+        game.addCar(new Car(carImage3));
         game.setCarMovement();
         game.setRoadDimension(imageViewRoad.getHeight(), imageViewRoad.getWidth());
         game.setCollisionDetector();

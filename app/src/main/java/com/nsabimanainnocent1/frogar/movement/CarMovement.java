@@ -37,8 +37,8 @@ public class CarMovement extends TimerTask{
     public void setRoadHeight(Integer roadHeight){this.roadHeight = roadHeight;}
 
     public void moveCars() {
-        for(int i = 0; i <allCars.size(); i++){
-            if (i % 2 == 0) {
+        for(int i = 0; i < allCars.size(); i++){
+            if (i % 2 != 0) {
                 allCars.get(i).moveUp(roadWidth, roadHeight);
             }else {
                 allCars.get(i).moveDown(roadWidth, roadHeight);

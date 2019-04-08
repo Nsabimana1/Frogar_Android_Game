@@ -78,12 +78,12 @@ public class Car implements Object {
 //        if (this.x <= width || this.x <= this.startingPositionX){
 //            this.x = startingPositionX;
 //        }
-        if (this.y > startingPositionY + 500){
+        if (this.y > startingPositionY + 600){
             this.y = startingPositionY;
         }
 
         if(this.y < this.startingPositionY){
-            this.y = startingPositionY + 500;
+            this.y = startingPositionY + 600;
         }
         carImage.setTranslationY(this.y);
     }
