@@ -99,12 +99,6 @@ public class GameScreen extends AppCompatActivity {
         this.initializeObjects();
     }
 
-    public void resetCarLocation(ImageView car, ImageView parent){
-        float topOfCar = car.getY();
-        if(topOfCar == parent.getHeight()){
-            car.setY(0);
-        }
-    }
     public void ProgressBar(Boolean collision){
         if(collision && lives == 2){
             pBFull.setVisibility(View.INVISIBLE);

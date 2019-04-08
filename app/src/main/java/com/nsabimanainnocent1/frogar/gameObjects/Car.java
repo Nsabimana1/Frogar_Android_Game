@@ -24,6 +24,10 @@ public class Car implements Object {
 
     public float getCarX(){return x;}
     public float getCarY(){return y;}
+    public float getFrogTop(){return carImage.getTop();}
+    public float getFrogBottom(){return carImage.getBottom();}
+    public float getFrogLeft(){return carImage.getLeft();}
+    public float getFrogRight(){return carImage.getRight();}
     public float getCarWidth(){return carImage.getWidth();}
     public float getCarHeight(){return carImage.getHeight();}
 

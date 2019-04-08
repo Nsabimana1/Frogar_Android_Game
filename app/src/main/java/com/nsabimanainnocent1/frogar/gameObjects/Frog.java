@@ -19,6 +19,10 @@ public class Frog implements Object {
 
     public float getFrogX(){return x;}
     public float getFrogY(){return y;}
+    public float getFrogTop(){return frogImage.getTop();}
+    public float getFrogBottom(){return frogImage.getBottom();}
+    public float getFrogLeft(){return frogImage.getLeft();}
+    public float getFrogRight(){return frogImage.getRight();}
     public float getFrogWidth(){return frogImage.getWidth();}
     public float getFrogHeight(){return frogImage.getHeight();}
 
