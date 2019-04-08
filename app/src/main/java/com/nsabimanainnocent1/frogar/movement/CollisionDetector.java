@@ -16,12 +16,6 @@ public class CollisionDetector {
     private Integer nCollisions;
     private static final int modifiedHitbox = 5;
 
-    float frogX = frog.getFrogX() + modifiedHitbox;
-    float frogY = frog.getFrogY() + modifiedHitbox;
-    float frogWidth = frog.getFrogWidth() - modifiedHitbox;
-    float frogHeight = frog.getFrogHeight() - modifiedHitbox;
-    float frogRightCorners = frogX + frogWidth;
-    float frogBottomCorners = frogY + frogHeight;
 
     public CollisionDetector(Frog frog, ArrayList<Car> allCars){
         this.frog = frog;
@@ -48,7 +42,7 @@ public class CollisionDetector {
 
 
         //TODO Will refactor later to clean up, still need to finish
-    public boolean isCarAndFrogOverlap(Car car, Frog frog){
+   /* public boolean isCarAndFrogOverlap(Car car, Frog frog){
         boolean isOverlapping = false;
         float carX = car.getCarX(); //top left x
         float carY = car.getCarY(); // top left y
@@ -75,7 +69,7 @@ public class CollisionDetector {
             isOverlapping = true;
         }
         return isOverlapping;
-    }
+    } */
 
     boolean checkWhetherCollided(){
         for(Car car: allCars) {
