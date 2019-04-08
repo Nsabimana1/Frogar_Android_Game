@@ -120,7 +120,6 @@ public class GameScreen extends AppCompatActivity {
             scoreValue -= 1;
         }else if(collision && lives == 0) {
             displayToast("I am read for the next level");
-
             AlertDialog.Builder loseAlert = new AlertDialog.Builder(GameScreen.this);
             loseAlert.setMessage("Your Score was:" + scoreValue+". Would you like to try again?")
                     .setCancelable(false)
@@ -180,6 +179,11 @@ public class GameScreen extends AppCompatActivity {
         this.scoreValueView.setText(scoreValue.toString());
     }
 
+    public void changeGameState(){
+        game.checkGameState();
+    }
+
+
 
     public void rumTimer(){
         if(!this.isMoving) {
@@ -191,6 +195,7 @@ public class GameScreen extends AppCompatActivity {
                     game.getCarMovement().moveCars();
                     game.checkScoring();
                     updateUI();
+                    changeGameState();
                 }
             }, 0, 10);
         }

@@ -1,6 +1,8 @@
 package com.nsabimanainnocent1.frogar.movement;
 
 import android.content.Context;
+import android.util.Log;
+
 import com.nsabimanainnocent1.frogar.gameObjects.Car;
 import com.nsabimanainnocent1.frogar.gameObjects.Frog;
 
@@ -14,6 +16,7 @@ public class Game {
     private int roadWidth, roadHeight;
     private GameStateUpdater gameStateUpdater;
     private Integer scores = 0;
+    private CollisionDetector collisionDetector;
 
     private boolean wasFrogInRightCorner = true, wasFrogInLeftCorner = true;
     private boolean isFrogInRightCorner = false, isFrogInLeftCorner = false;
@@ -43,7 +46,8 @@ public class Game {
     }
 
     public void setCollisionDetector(){
-        this.gameStateUpdater.setCollisionDetector(new CollisionDetector(frog, allCars));
+        this.collisionDetector = new CollisionDetector(frog, allCars);
+        this.gameStateUpdater.setCollisionDetector(collisionDetector);
     }
 
     public Float getFrogX(){
@@ -100,6 +104,19 @@ public class Game {
 
         if(frog.getX() > 648 && frog.getX() < 650){
             this.isFrogInRightCorner = true;
+        }
+    }
+
+//    public void setCollisionDetector(){
+//        this.collisionDetector = new CollisionDetector(frog, allCars);
+//    }
+
+    public void checkGameState(){
+        boolean state = this.collisionDetector.checkWhetherCollided();
+        if (state){
+            Log.e("collision status", "We just colided");
+        }else{
+            Log.e("collision status", "We did not colide");
         }
     }
 
