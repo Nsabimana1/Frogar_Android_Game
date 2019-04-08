@@ -115,7 +115,7 @@ public class GameScreen extends AppCompatActivity {
         }
         else if(lives == 0) {
             AlertDialog.Builder loseAlert = new AlertDialog.Builder(GameScreen.this);
-            loseAlert.setMessage("Your Score was:" + scoreValue+" would you like to try again?")
+            loseAlert.setMessage("Your Score was:" + scoreValue+". Would you like to try again?")
                     .setCancelable(false)
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override

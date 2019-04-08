@@ -22,14 +22,11 @@ public class Car implements Object {
         this.y = startingPositionY;
     }
 
-    public float getCarX(){return x;}
     public float getCarY(){return y;}
-    public float getFrogTop(){return carImage.getTop();}
-    public float getFrogBottom(){return carImage.getBottom();}
-    public float getFrogLeft(){return carImage.getLeft();}
-    public float getFrogRight(){return carImage.getRight();}
-    public float getCarWidth(){return carImage.getWidth();}
-    public float getCarHeight(){return carImage.getHeight();}
+    public int getCarTop(){return carImage.getTop();}
+    public int getCarBottom(){return carImage.getBottom();}
+    public int getCarLeft(){return carImage.getLeft();}
+    public int getCarRight(){return carImage.getRight();}
 
     @Override
     public void move() {

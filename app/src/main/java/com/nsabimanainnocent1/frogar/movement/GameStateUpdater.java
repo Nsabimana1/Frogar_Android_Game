@@ -26,7 +26,7 @@ public class GameStateUpdater {
     public void reduceHealth(){
         if (collisionDetector.checkWhetherCollided()){
             this.healthScore -= 1;
-            Log.i("Collition happened", "Hi, We collided");
+            Log.i("Collision happened", "Hi, We collided");
         }
     }
 
