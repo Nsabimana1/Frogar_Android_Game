@@ -47,7 +47,7 @@ public class Game {
     }
 
     public Float getFrogX(){
-        return this.frog.getFrogX();
+        return this.frog.getX();
     }
 
 
@@ -94,11 +94,11 @@ public class Game {
     }
 
     public void checkFrogPosition(){
-        if(frog.getFrogX() > 0 && frog.getFrogX() < 20){
+        if(frog.getX() > 0 && frog.getX() < 20){
             this.isFrogInLeftCorner = true;
         }
 
-        if(frog.getFrogX() > 648 && frog.getFrogX() < 650){
+        if(frog.getX() > 648 && frog.getX() < 650){
             this.isFrogInRightCorner = true;
         }
     }

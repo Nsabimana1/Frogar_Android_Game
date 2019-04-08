@@ -28,6 +28,13 @@ public class Frog {
         frogImage.setTranslationY(this.y);
     }
 
+    public Float getX(){
+        return this.x;
+    }
+
+    public float getY() {
+        return y;
+    }
 
     public void move() {
 //        xVelocity = frogMovement.getXVelocity();
