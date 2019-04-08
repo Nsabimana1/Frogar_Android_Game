@@ -28,7 +28,7 @@ public class FrogMovement{
             sensorManager.registerListener(new SensorEventListener() {
                 @Override
                 public void onSensorChanged(SensorEvent event) {
-                    frog.changePosition(event.values[0] * 20, event.values[1]*20);
+                    frog.changePosition(event.values[0] * 40, event.values[1]*40);
                 }
                 @Override
                 public void onAccuracyChanged(Sensor sensor, int accuracy) {
