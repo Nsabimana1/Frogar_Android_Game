@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.nsabimanainnocent1.frogar.GameScreen;
 
 public class GameStateUpdater {
     private TextView scoreView, healthView, gameLevelView;
@@ -30,28 +29,11 @@ public class GameStateUpdater {
         }
     }
 
-    public void updateUI(){
-//        this.scoreView.setText(gameScore.toString());
-//        this.healthView.setText(healthScore.toString());
-//        this.gameLevelView.setText(gameLevelValue.toString());
-//        GameScreen.updateUI();
-    }
-
     public void increaseScore(){
         this.gameScore += 2;
     }
 
     public void changeGameState(){
         this.reduceHealth();
-        this.updateUI();
-    }
-
-    public void doSomething(){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                updateUI();
-            }
-        });
     }
 }
