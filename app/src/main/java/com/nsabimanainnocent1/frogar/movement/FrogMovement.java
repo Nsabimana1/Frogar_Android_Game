@@ -34,7 +34,7 @@ public class FrogMovement{
                 public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
                 }
-            }, sensor, SensorManager.SENSOR_DELAY_NORMAL);
+            }, sensor, SensorManager.SENSOR_DELAY_FASTEST);
         }
     }
 
