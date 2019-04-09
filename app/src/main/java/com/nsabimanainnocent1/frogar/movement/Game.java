@@ -82,14 +82,17 @@ public class Game {
     }
 
     public void checkScoring(){
+        Log.i("Game", "Entering checkScoring(); " + isFrogInRightCorner + "/" + wasFrogInRightCorner + ";" + isFrogInLeftCorner + "/" + wasFrogInLeftCorner);
         checkFrogPosition();
         if(isFrogInRightCorner && wasFrogInLeftCorner){
+            Log.i("Game", "Score bump a");
             this.scores += 1;
             wasFrogInRightCorner = true;
             wasFrogInLeftCorner = false;
         }
 
         if(isFrogInLeftCorner && wasFrogInRightCorner){
+            Log.i("Game", "Score bump b");
             this.scores += 1;
             wasFrogInLeftCorner = true;
             wasFrogInRightCorner = false;
@@ -98,13 +101,8 @@ public class Game {
     }
 
     public void checkFrogPosition(){
-        if(frog.getX() > 0 && frog.getX() < 20){
-            this.isFrogInLeftCorner = true;
-        }
-
-        if(frog.getX() > 648 && frog.getX() < 650){
-            this.isFrogInRightCorner = true;
-        }
+        this.isFrogInLeftCorner = (frog.getX() > 0 && frog.getX() < 20);
+        this.isFrogInRightCorner = (frog.getX() > 640 && frog.getX() < 660);
     }
 
 //    public void setCollisionDetector(){

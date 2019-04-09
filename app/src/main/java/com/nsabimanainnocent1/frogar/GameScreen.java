@@ -121,22 +121,22 @@ public class GameScreen extends AppCompatActivity {
         }else if(collision && lives == 0) {
             displayToast("I am read for the next level");
             showDialogBox();
-            AlertDialog.Builder loseAlert = new AlertDialog.Builder(GameScreen.this);
-            loseAlert.setMessage("Your Score was:" + scoreValue+". Would you like to try again?")
-                    .setCancelable(false)
-                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
-                            resetButton();
-                        }
-                    })
-                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            finish();
-                        }
-                    });
+//            AlertDialog.Builder loseAlert = new AlertDialog.Builder(GameScreen.this);
+//            loseAlert.setMessage("Your Score was:" + scoreValue+". Would you like to try again?")
+//                    .setCancelable(false)
+//                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            dialog.cancel();
+//                            resetButton();
+//                        }
+//                    })
+//                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            finish();
+//                        }
+//                    });
         }
 
     }
@@ -184,8 +184,6 @@ public class GameScreen extends AppCompatActivity {
         game.checkGameState();
     }
 
-
-
     public void rumTimer(){
         if(!this.isMoving) {
             this.isMoving = true;
@@ -216,17 +214,21 @@ public class GameScreen extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(GameScreen.this);
         builder.setCancelable(false);
         builder.setTitle("Game Status");
-        builder.setMessage("Would like to go to the next level?");
+        builder.setMessage("Your Score was:" + scoreValue+". Would you like to try again?");
         builder.setPositiveButton("Accept", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
                 /// Todo write code here
+
+                dialog.cancel();
+                resetButton();
             }
         })
                 .setNegativeButton("Quit", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         /// Todo write code here
+                        finish();
                     }
                 });
         // Create the AlertDialog object and return it

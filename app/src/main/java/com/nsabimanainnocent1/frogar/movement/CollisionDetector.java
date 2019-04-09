@@ -1,6 +1,7 @@
 package com.nsabimanainnocent1.frogar.movement;
 
 import android.graphics.Rect;
+import android.util.Log;
 
 import com.nsabimanainnocent1.frogar.gameObjects.Car;
 import com.nsabimanainnocent1.frogar.gameObjects.Frog;
@@ -39,8 +40,10 @@ class CollisionDetector {
     boolean checkWhetherCollided(){
         Rect frogRect = frogToRect(frog);
         for(Car car: allCars) {
+            Log.e("Entering collision", "In collition dection");
             Rect carRect = carToRect(car);
             if (frogRect.intersect(carRect)) {
+                Log.e("When colided", "We have surely colided");
                 isCollided = true;
                 break;
             }else{
