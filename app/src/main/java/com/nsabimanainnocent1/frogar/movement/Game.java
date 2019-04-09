@@ -55,7 +55,6 @@ public class Game {
     }
 
 
-
     public void starGame(){
 //        this.carMovement.movement();
 //        Timer t = new Timer();
@@ -82,27 +81,35 @@ public class Game {
     }
 
     public void checkScoring(){
-        Log.i("Game", "Entering checkScoring(); " + isFrogInRightCorner + "/" + wasFrogInRightCorner + ";" + isFrogInLeftCorner + "/" + wasFrogInLeftCorner);
         checkFrogPosition();
+        Log.i("Game", "Entering checkScoring(); " + isFrogInRightCorner + "/" + wasFrogInLeftCorner  + ";" + isFrogInLeftCorner + "/" + wasFrogInRightCorner);
         if(isFrogInRightCorner && wasFrogInLeftCorner){
             Log.i("Game", "Score bump a");
             this.scores += 1;
-            wasFrogInRightCorner = true;
             wasFrogInLeftCorner = false;
+            isFrogInRightCorner = false;
+
+            wasFrogInRightCorner = true;
         }
 
         if(isFrogInLeftCorner && wasFrogInRightCorner){
             Log.i("Game", "Score bump b");
             this.scores += 1;
-            wasFrogInLeftCorner = true;
+            isFrogInLeftCorner = false;
             wasFrogInRightCorner = false;
+
+            wasFrogInLeftCorner = true;
+
         }
 //        updateFrogPositionHistory();
     }
 
     public void checkFrogPosition(){
-        this.isFrogInLeftCorner = (frog.getX() > 0 && frog.getX() < 20);
-        this.isFrogInRightCorner = (frog.getX() > 640 && frog.getX() < 660);
+//        this.isFrogInLeftCorner = (frog.getX() >= -180 && frog.getX() < -165);
+//        this.isFrogInRightCorner = (frog.getX() > 165 && frog.getX() <= 180);
+
+        this.isFrogInLeftCorner = (frog.getX() == -180);
+        this.isFrogInRightCorner = (frog.getX() == 180);
     }
 
 //    public void setCollisionDetector(){

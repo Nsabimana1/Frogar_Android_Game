@@ -22,11 +22,44 @@ public class Frog {
 
 
     public void changePosition(float x, float y){
-        this.x = x;
-        this.y = y;
+        restrictInBoundaries(x, y);
+//        this.x = x;
+//        this.y = y;
         frogImage.setTranslationX(this.x);
         frogImage.setTranslationY(this.y);
     }
+    public void restrictInBoundaries(float x, float y){
+        if(x < -180){
+            this.x = -180;
+        }else if(x > 180){
+            this.x = 180;
+        }else {
+            this.x = x;
+        }
+
+        if(y < -220){
+            this.y = -220;
+        }else if(y > 220){
+            this.y = 220;
+        }else {
+            this.y = y;
+        }
+
+//        if(x < 0){
+//            this.x = 10;
+//        }else if(x > 409){
+//            this.x = 390;
+//        }
+
+//        if(y < 0){
+//            this.y = -220;
+//        }else if(y > 486){
+//            this.y = 476;
+//        }else {
+//            this.y = y;
+//        }
+    }
+
 
     public Float getX(){
         return this.x;

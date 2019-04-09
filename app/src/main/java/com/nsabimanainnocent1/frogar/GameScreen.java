@@ -158,9 +158,9 @@ public class GameScreen extends AppCompatActivity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Float imageX = frogImage.getX();
-                Float imageY = frogImage.getY();
-                testingView.setText("frgo is located at " + imageX.toString() + ", " + imageY.toString() );
+                Integer imageX = imageViewRoad.getHeight();
+                Integer imageY = imageViewRoad.getWidth();
+                testingView.setText("frog is located at x: " + imageX.toString() + ", Y: " + imageY.toString() );
             }
         });
     }
@@ -195,6 +195,7 @@ public class GameScreen extends AppCompatActivity {
                     game.checkScoring();
                     updateUI();
                     changeGameState();
+//                    showFrogWhere();
                 }
             }, 0, 10);
         }
@@ -219,7 +220,6 @@ public class GameScreen extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int id) {
                 /// Todo write code here
-
                 dialog.cancel();
                 resetButton();
             }

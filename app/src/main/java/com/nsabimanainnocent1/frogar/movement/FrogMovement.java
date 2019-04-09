@@ -15,6 +15,8 @@ public class FrogMovement{
     private Frog frog;
     private boolean isActive = false;
     private Context context;
+    private final Float FRAMES_PER_SECOND = 30f;
+//    private long FramesPerSec = 5L;
 
     public FrogMovement(Frog frog, Context context){
        this.frog = frog;
@@ -28,14 +30,25 @@ public class FrogMovement{
             sensorManager.registerListener(new SensorEventListener() {
                 @Override
                 public void onSensorChanged(SensorEvent event) {
-                    frog.changePosition(event.values[0] * 40, event.values[1]*40);
+//                    frog.changePosition((float)Math.floor(event.values[0] * 40), (float)Math.floor(event.values[1]*40));
+                    float x = regulateSensorInput(event.values[0]);
+                    float y = regulateSensorInput(event.values[1]);
+                    moveFrog(x, y);
                 }
                 @Override
                 public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
                 }
-            }, sensor, SensorManager.SENSOR_DELAY_FASTEST);
+            }, sensor, SensorManager.SENSOR_DELAY_NORMAL);
         }
+    }
+
+    public void moveFrog(Float x, Float y){
+        frog.changePosition(x, y);
+    }
+
+    public Float regulateSensorInput(Float sensorValue){
+        return (float) Math.floor(sensorValue)* FRAMES_PER_SECOND;
     }
 
     public void markActivate(){

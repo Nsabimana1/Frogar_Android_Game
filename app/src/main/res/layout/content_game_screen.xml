@@ -103,10 +103,8 @@
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.522"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.617"
             app:srcCompat="@drawable/frog" />
 
         <ImageView
@@ -119,10 +117,10 @@
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.194"
+            app:layout_constraintHorizontal_bias="0.222"
             app:layout_constraintStart_toStartOf="@+id/imageViewRoad"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.069"
+            app:layout_constraintVertical_bias="0.56"
             app:srcCompat="@drawable/car11" />
 
         <ImageView
@@ -135,10 +133,10 @@
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.813"
+            app:layout_constraintHorizontal_bias="0.82"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintVertical_bias="0.952"
             app:srcCompat="@drawable/car33" />
 
         <ImageView
@@ -151,10 +149,10 @@
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.522"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/imageViewRoad"
-            app:layout_constraintVertical_bias="0.184"
+            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/car22" />
 
     </android.support.constraint.ConstraintLayout>
