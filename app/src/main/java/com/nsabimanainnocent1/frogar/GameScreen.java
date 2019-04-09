@@ -32,7 +32,7 @@ public class GameScreen extends AppCompatActivity {
     private Integer lives = 2;
     private boolean isMoving = false;
 
-    Integer level = 0;
+    Integer level = 1;
 
     private TextView testingView;
 
@@ -51,10 +51,6 @@ public class GameScreen extends AppCompatActivity {
                 showFrogWhere();
                 game.starGame();
                 rumTimer();
-//                showFrogWhere();
-//                imageX = imageViewRoad.getHeight();
-//                imageY = imageViewRoad.getWidth();
-//                testingView.setText(imageX.toString() + ", " + imageY.toString());
             }
         });
 
@@ -62,8 +58,8 @@ public class GameScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ProgressBar(true);
-//                resetButton();
-//                game.resetGame();
+                resetButton();
+                game.resetGame();
 //                game.starGame();
             }
         });
@@ -86,7 +82,6 @@ public class GameScreen extends AppCompatActivity {
         carImage3 = findViewById(R.id.car3);
         gameLevelView = findViewById(R.id.gameLevel);
         testingView = findViewById(R.id.testing);
-
     }
 
     private void initializeObjects(){
@@ -121,29 +116,11 @@ public class GameScreen extends AppCompatActivity {
         }else if(collision && lives == 0) {
             displayToast("I am read for the next level");
             showDialogBox();
-//            AlertDialog.Builder loseAlert = new AlertDialog.Builder(GameScreen.this);
-//            loseAlert.setMessage("Your Score was:" + scoreValue+". Would you like to try again?")
-//                    .setCancelable(false)
-//                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            dialog.cancel();
-//                            resetButton();
-//                        }
-//                    })
-//                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            finish();
-//                        }
-//                    });
         }
-
     }
     public void updateLevel() {
-        scoreValue = 100;
+        scoreValue = game.getScores();
         if (scoreValue / 10 == 10) {
-            gameLevelView.setText("Level: " + level.toString());
             level +=1;
             Log.i("I went to another level", "I am now one level " + level);
         }
@@ -165,7 +142,6 @@ public class GameScreen extends AppCompatActivity {
         });
     }
 
-
     public void updateUI(){
         runOnUiThread(new Runnable() {
             @Override
@@ -178,6 +154,7 @@ public class GameScreen extends AppCompatActivity {
     public void assignUIValues(){
         this.scoreValue = game.getScores();
         this.scoreValueView.setText(scoreValue.toString());
+        this.gameLevelView.setText("Level: " + level.toString());
     }
 
     public void changeGameState(){
@@ -221,6 +198,7 @@ public class GameScreen extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int id) {
                 /// Todo write code here
                 dialog.cancel();
+                updateLevel();
                 resetButton();
             }
         })
