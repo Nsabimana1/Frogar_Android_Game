@@ -63,7 +63,6 @@ public class GameScreen extends AppCompatActivity {
 //                game.starGame();
             }
         });
-
     }
 
     private void setComponents(){
@@ -130,6 +129,10 @@ public class GameScreen extends AppCompatActivity {
         return scoreValue += 10;
     }
 
+    public void updateHealth(){
+
+    }
+
     public void showFrogWhere(){
         Log.i("I was updated", "here I am");
         runOnUiThread(new Runnable() {
@@ -155,10 +158,11 @@ public class GameScreen extends AppCompatActivity {
         this.scoreValue = game.getScores();
         this.scoreValueView.setText(scoreValue.toString());
         this.gameLevelView.setText("Level: " + level.toString());
+        this.ProgressBar(game.checkGameState());
     }
 
     public void changeGameState(){
-        game.checkGameState();
+        updateUI();
     }
 
     public void rumTimer(){
@@ -174,9 +178,11 @@ public class GameScreen extends AppCompatActivity {
                     changeGameState();
 //                    showFrogWhere();
                 }
-            }, 0, 100);
+            }, 0, 10);
         }
     }
+
+
 
     public void displayToast(String message){
         Context context = getApplicationContext();

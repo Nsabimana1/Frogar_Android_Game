@@ -116,13 +116,14 @@ public class Game {
 //        this.collisionDetector = new CollisionDetector(frog, allCars);
 //    }
 
-    public void checkGameState(){
+    public boolean checkGameState(){
         boolean state = this.collisionDetector.checkWhetherCollided();
         if (state){
             Log.e("collision status", "We just colided");
-        }else{
+        }else {
             Log.e("collision status", "We did not colide");
         }
+        return state;
     }
 
     public Integer getScores(){
