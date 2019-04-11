@@ -22,11 +22,10 @@ public class Car {
         this.y = startingPositionY;
     }
 
-    public float getCarY(){return y;}
-    public int getCarTop(){return carImage.getTop();}
-    public int getCarBottom(){return carImage.getBottom();}
-    public int getCarLeft(){return carImage.getLeft();}
-    public int getCarRight(){return carImage.getRight();}
+    public float getCarY(){return carImage.getY();}
+    public float getCarX(){return carImage.getX();}
+    public float getCarBottom(){return carImage.getY() + carImage.getHeight();}
+    public float getCarTopRight(){return carImage.getX() + carImage.getWidth();}
 
 
     public void move() {

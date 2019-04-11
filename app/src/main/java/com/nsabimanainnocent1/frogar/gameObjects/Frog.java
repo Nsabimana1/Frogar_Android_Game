@@ -15,10 +15,10 @@ public class Frog {
         this.frogImage = frogImage;
     }
 
-    public int getFrogTop(){return frogImage.getTop();}
-    public int getFrogBottom(){return frogImage.getBottom();}
-    public int getFrogLeft(){return frogImage.getLeft();}
-    public int getFrogRight(){return frogImage.getRight();}
+    public float getFrogTop(){return frogImage.getY();}
+    public float getFrogBottom(){return frogImage.getY() + frogImage.getHeight();}
+    public float getFrogLeft(){return frogImage.getX();}
+    public float getFrogRight(){return frogImage.getX() + frogImage.getWidth();}
 
 
     public void changePosition(float x, float y){
