@@ -39,9 +39,11 @@ class CollisionDetector {
 
     boolean checkWhetherCollided(){
         Rect frogRect = frogToRect(frog);
+        Log.i("CollisionDetector", "FrogRect: " + frogRect);
         for(Car car: allCars) {
             Log.e("Entering collision", "In collition dection");
             Rect carRect = carToRect(car);
+            Log.i("CollisionDetector", "carRect: " + carRect);
             if (frogRect.intersect(carRect)) {
                 Log.e("When colided", "We have surely colided");
                 isCollided = true;

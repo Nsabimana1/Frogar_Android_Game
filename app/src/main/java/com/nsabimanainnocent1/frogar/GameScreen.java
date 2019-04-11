@@ -174,7 +174,7 @@ public class GameScreen extends AppCompatActivity {
                     changeGameState();
 //                    showFrogWhere();
                 }
-            }, 0, 10);
+            }, 0, 100);
         }
     }
 
