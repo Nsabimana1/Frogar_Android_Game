@@ -56,13 +56,8 @@ public class Game {
 
 
     public void starGame(){
-//        this.carMovement.movement();
-//        Timer t = new Timer();
-//        t.scheduleAtFixedRate(carMovement, 0, 1000);
-//        this.carMovement.initiateMovement(carMovement);
         this.frogMovement.markActivate();
         this.frogMovement.activateFrog();
-//        gameStateUpdater.updateUI();
     }
 
     public void resetGame(){
@@ -85,7 +80,7 @@ public class Game {
         Log.i("Game", "Entering checkScoring(); " + isFrogInRightCorner + "/" + wasFrogInLeftCorner  + ";" + isFrogInLeftCorner + "/" + wasFrogInRightCorner);
         if(isFrogInRightCorner && wasFrogInLeftCorner){
             Log.i("Game", "Score bump a");
-            this.scores += 1;
+            this.scores += 10;
             wasFrogInLeftCorner = false;
             isFrogInRightCorner = false;
 
@@ -94,14 +89,12 @@ public class Game {
 
         if(isFrogInLeftCorner && wasFrogInRightCorner){
             Log.i("Game", "Score bump b");
-            this.scores += 1;
+            this.scores += 10;
             isFrogInLeftCorner = false;
             wasFrogInRightCorner = false;
 
             wasFrogInLeftCorner = true;
-
         }
-//        updateFrogPositionHistory();
     }
 
     public void checkFrogPosition(){
@@ -119,11 +112,16 @@ public class Game {
     public boolean checkGameState(){
         boolean state = this.collisionDetector.checkWhetherCollided();
         if (state){
+            resetCars();
             Log.e("collision status", "We just colided");
         }else {
             Log.e("collision status", "We did not colide");
         }
         return state;
+    }
+
+    public void resetCars(){
+        carMovement.restCars();
     }
 
     public Integer getScores(){

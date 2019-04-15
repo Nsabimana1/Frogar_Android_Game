@@ -22,7 +22,6 @@ public class CarMovement{
 
     private Integer roadWidth = 0, roadHeight = 0;
 
-
     public CarMovement(ArrayList<Car> cars, GameStateUpdater gameStateUpdater) {
         this.allCars = cars;
 //        this.isMoving = false;
@@ -39,7 +38,7 @@ public class CarMovement{
             }else {
                 allCars.get(i).moveDown(roadWidth, roadHeight);
             }
-            Log.i("Car " + allCars.get(i), "has is at position " + allCars.get(i).getCarY());
+            Log.i("Car " + allCars.get(i), "has is at position " + allCars.get(i).getTop());
         }
     }
 

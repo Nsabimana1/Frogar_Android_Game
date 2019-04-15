@@ -29,10 +29,14 @@ public class GameScreen extends AppCompatActivity {
     private Float imageX = new Float(0f), imageY = new Float(0f);
     private Game game;
     private GameStateUpdater gameStateUpdater;
-    private Integer lives = 2;
+    private Integer lives = 3;
     private boolean isMoving = false;
+    private Timer timer;
+
+    private Integer timerInterval = 25;
 
     Integer level = 1;
+
 
     private TextView testingView;
 
@@ -50,6 +54,7 @@ public class GameScreen extends AppCompatActivity {
             public void onClick(View view) {
                 showFrogWhere();
                 game.starGame();
+                setTimer();
                 rumTimer();
             }
         });
@@ -102,18 +107,19 @@ public class GameScreen extends AppCompatActivity {
     }
 
     public void ProgressBar(Boolean collision){
-        if(collision && lives == 2){
+        if(collision && lives == 3){
             pBFull.setVisibility(View.INVISIBLE);
             pBHalf.setVisibility(View.VISIBLE);
             lives -= 1;
             scoreValue -= 1;
-        }else if(collision && lives == 1){
+        }else if(collision && lives == 2){
             pBHalf.setVisibility(View.INVISIBLE);
             pbEmpty.setVisibility(View.VISIBLE);
             lives -=1;
             scoreValue -= 1;
-        }else if(collision && lives == 0) {
+        }else if(collision && lives == 1) {
             displayToast("I am read for the next level");
+            this.stopTimer();
             showDialogBox();
         }
     }
@@ -168,8 +174,7 @@ public class GameScreen extends AppCompatActivity {
     public void rumTimer(){
         if(!this.isMoving) {
             this.isMoving = true;
-            Timer t = new Timer();
-            t.scheduleAtFixedRate(new TimerTask() {
+            timer.scheduleAtFixedRate(new TimerTask() {
                 @Override
                 public void run() {
                     game.getCarMovement().moveCars();
@@ -178,11 +183,25 @@ public class GameScreen extends AppCompatActivity {
                     changeGameState();
 //                    showFrogWhere();
                 }
-            }, 0, 10);
+            }, 0, timerInterval);
         }
     }
 
+    public void stopTimer(){
+        timer.cancel();
+        this.isMoving = false;
+    }
 
+    public void speedTimerInterval(){
+        this.timerInterval /= 5;
+    }
+
+    public void setTimer(){
+        this.timer = new Timer();
+        this.timerInterval = 50;
+        lives = 3;
+        scoreValue = 0;
+    }
 
     public void displayToast(String message){
         Context context = getApplicationContext();
@@ -204,7 +223,10 @@ public class GameScreen extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int id) {
                 /// Todo write code here
                 dialog.cancel();
+                setTimer();
+                speedTimerInterval();
                 updateLevel();
+                game.resetCars();
                 resetButton();
             }
         })

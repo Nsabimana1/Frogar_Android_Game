@@ -8,17 +8,26 @@ public class Frog {
     private float xVelocity;
     private float yVelocity;
     private ImageView frogImage;
+    private float initXPosition = 0, initYPosition = 0;
 
     public Frog(float x, float y, ImageView frogImage){
         this.x = x;
         this.y = y;
         this.frogImage = frogImage;
+        this.frogImage.setX(x); this.frogImage.setY(y);
     }
 
-    public float getFrogTop(){return frogImage.getY();}
-    public float getFrogBottom(){return frogImage.getY() + frogImage.getHeight();}
-    public float getFrogLeft(){return frogImage.getX();}
-    public float getFrogRight(){return frogImage.getX() + frogImage.getWidth();}
+//    public float getFrogTop(){return frogImage.getY();}
+//    public float getFrogBottom(){return frogImage.getY() + frogImage.getHeight();}
+//    public float getFrogLeft(){return frogImage.getX();}
+//    public float getFrogRight(){return frogImage.getX() + frogImage.getWidth();}
+
+
+///testing purpose
+    public Integer getTop(){return (int) frogImage.getY() - frogImage.getHeight()/ 3 ;}
+    public Integer getLeft(){return (int) frogImage.getX() - frogImage.getWidth()/ 3 ;}
+    public Integer getRight(){return (int) frogImage.getX() + frogImage.getWidth()/ 3 ;}
+    public Integer getBottom(){return (int) frogImage.getY() + frogImage.getHeight()/ 3;}
 
 
     public void changePosition(float x, float y){
