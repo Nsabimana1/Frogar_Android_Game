@@ -32,8 +32,6 @@ public class Frog {
 
     public void changePosition(float x, float y){
         restrictInBoundaries(x, y);
-//        this.x = x;
-//        this.y = y;
         frogImage.setTranslationX(this.x);
         frogImage.setTranslationY(this.y);
     }
@@ -53,20 +51,6 @@ public class Frog {
         }else {
             this.y = y;
         }
-
-//        if(x < 0){
-//            this.x = 10;
-//        }else if(x > 409){
-//            this.x = 390;
-//        }
-
-//        if(y < 0){
-//            this.y = -220;
-//        }else if(y > 486){
-//            this.y = 476;
-//        }else {
-//            this.y = y;
-//        }
     }
 
 
@@ -76,13 +60,6 @@ public class Frog {
 
     public float getY() {
         return y;
-    }
-
-    public void move() {
-//        xVelocity = frogMovement.getXVelocity();
-//        xSpeedCap();
-//        yVelocity = frogMovement.getYVelocity();
-//        ySpeedCap();
     }
 
 

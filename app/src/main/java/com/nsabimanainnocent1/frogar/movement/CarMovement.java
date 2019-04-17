@@ -24,7 +24,6 @@ public class CarMovement{
 
     public CarMovement(ArrayList<Car> cars, GameStateUpdater gameStateUpdater) {
         this.allCars = cars;
-//        this.isMoving = false;
         this.gameStateUpdater = gameStateUpdater;
     }
 
@@ -38,27 +37,10 @@ public class CarMovement{
             }else {
                 allCars.get(i).moveDown(roadWidth, roadHeight);
             }
-            Log.i("Car " + allCars.get(i), "has is at position " + allCars.get(i).getTop());
         }
     }
 
-//    @Override
-//    public void run() {
-//        Log.i("CarMovement", "Hi, I moved!");
-//        moveCars();
-//        this.gameStateUpdater.changeGameState();
-//    }
-
-//    public void initiateMovement(TimerTask activity){
-//        if(!this.isMoving) {
-//            this.isMoving = true;
-//            Timer t = new Timer();
-//            t.scheduleAtFixedRate(activity, 0, this.Time_Interval);
-//        }
-//    }
-
     public void restCars(){
-//        this.isMoving = false;
         for(Car car: this.allCars){
             car.resetPosition();
         }
