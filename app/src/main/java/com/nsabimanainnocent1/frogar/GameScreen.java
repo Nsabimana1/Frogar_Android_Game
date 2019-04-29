@@ -32,12 +32,8 @@ public class GameScreen extends AppCompatActivity {
     private Integer lives = 3;
     private boolean isMoving = false;
     private Timer timer;
-
     private Integer timerInterval = 25;
-
-    Integer level = 1;
-
-
+    private Integer level = 1;
     private TextView testingView;
 
     @Override
@@ -134,10 +130,6 @@ public class GameScreen extends AppCompatActivity {
         return scoreValue += 10;
     }
 
-    public void updateHealth(){
-
-    }
-
     public void showFrogWhere(){
         Log.i("I was updated", "here I am");
         runOnUiThread(new Runnable() {
@@ -180,7 +172,6 @@ public class GameScreen extends AppCompatActivity {
                     game.checkScoring();
                     updateUI();
                     changeGameState();
-//                    showFrogWhere();
                 }
             }, 0, timerInterval);
         }
