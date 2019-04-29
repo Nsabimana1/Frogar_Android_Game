@@ -13,10 +13,11 @@ public class Game {
     private Frog frog;
     private FrogMovement frogMovement;
     private CarMovement carMovement;
-    private int roadWidth, roadHeight;
+    private final int roadWidth = 180, scoreInterval = 10;
     private GameStateUpdater gameStateUpdater;
     private Integer scores = 0;
     private CollisionDetector collisionDetector;
+
 
     private boolean wasFrogInRightCorner = true, wasFrogInLeftCorner = true;
     private boolean isFrogInRightCorner = false, isFrogInLeftCorner = false;
@@ -39,19 +40,9 @@ public class Game {
         this.frogMovement = new FrogMovement(frog, context);
     }
 
-    public void setRoadDimension(Integer width, Integer height){
-        this.roadWidth = width; this.roadHeight = height;
-        carMovement.setRoadWidth(width);
-        carMovement.setRoadHeight(height);
-    }
-
     public void setCollisionDetector(){
         this.collisionDetector = new CollisionDetector(frog, allCars);
         this.gameStateUpdater.setCollisionDetector(collisionDetector);
-    }
-
-    public Float getFrogX(){
-        return this.frog.getX();
     }
 
     public void starGame(){
@@ -70,14 +61,14 @@ public class Game {
     public void checkScoring(){
         checkFrogPosition();
         if(isFrogInRightCorner && wasFrogInLeftCorner){
-            this.scores += 10;
+            this.scores += scoreInterval;
             wasFrogInLeftCorner = false;
             isFrogInRightCorner = false;
             wasFrogInRightCorner = true;
         }
 
         if(isFrogInLeftCorner && wasFrogInRightCorner){
-            this.scores += 10;
+            this.scores += scoreInterval;
             isFrogInLeftCorner = false;
             wasFrogInRightCorner = false;
             wasFrogInLeftCorner = true;
@@ -85,17 +76,14 @@ public class Game {
     }
 
     public void checkFrogPosition(){
-        this.isFrogInLeftCorner = (frog.getX() == -180);
-        this.isFrogInRightCorner = (frog.getX() == 180);
+        this.isFrogInLeftCorner = (frog.getX() == -roadWidth);
+        this.isFrogInRightCorner = (frog.getX() == roadWidth);
     }
 
     public boolean checkGameState(){
         boolean state = this.collisionDetector.checkWhetherCollided();
         if (state){
             resetCars();
-            Log.e("collision status", "We just colided");
-        }else {
-            Log.e("collision status", "We did not colide");
         }
         return state;
     }

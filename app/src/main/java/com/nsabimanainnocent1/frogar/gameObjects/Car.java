@@ -10,7 +10,7 @@ public class Car {
     private final float initialVelX = 2, initialVelY = 2;
     private int speedFactor = 2;
     private ImageView carImage;
-
+    private final int roadHeight  = 600;
 
     public Car(ImageView carImage){
         this.velX = initialVelX;
@@ -21,31 +21,33 @@ public class Car {
         this.x = startingPositionX;
         this.y = startingPositionY;
     }
-//
-//    public float getCarY(){return carImage.getY();}
-//    public float getCarX(){return carImage.getX();}
-//    public float getCarBottom(){return carImage.getY() + carImage.getHeight();}
-//    public float getCarTopRight(){return carImage.getX() + carImage.getWidth();}
 
-
+    // for testing purpose
+    public Car(float x, float y){
+        this.velX = initialVelX;
+        this.velY = initialVelY;
+        startingPositionX = x;
+        startingPositionY = y;
+        this.x = startingPositionX;
+        this.y = startingPositionY;
+    }
     public Integer getTop(){return (int) carImage.getY() - carImage.getHeight()/ 3 ;}
     public Integer getLeft(){return (int) carImage.getX() - carImage.getWidth()/ 3 ;}
     public Integer getRight(){return (int) carImage.getX() + carImage.getWidth()/ 3 ;}
     public Integer getBottom(){return (int) carImage.getY() + carImage.getHeight()/ 3;}
 
+    public Float getX(){return this.x;}
+    public Float getY(){return this.y;}
 
-    public void moveUp(Integer width, Integer height){
+    public void moveUp(){
         this.y -= velY;
-//        carImage.setY(this.y);
-        setMovementRange(width, height);
+        setMovementRange();
     }
 
-    public void moveDown(Integer width, Integer height){
+    public void moveDown(){
         this.y += velY;
-//        carImage.setY(this.y);
-        setMovementRange(width, height);
+        setMovementRange();
     }
-
 
     public void stop() {
         this.velX = 0;
@@ -57,27 +59,22 @@ public class Car {
         this.velX *= speedFactor;
     }
 
-
     public void slowDown() {
         this.velX /= speedFactor;
         this.velX /= speedFactor;
     }
 
     public void resetPosition(){
-//        this.x = startingPositionX;
         this.y = startingPositionY;
         carImage.setTranslationY(y);
     }
 
-    private void setMovementRange(Integer width, Integer height){
-//        if (this.x <= width || this.x <= this.startingPositionX){
-//            this.x = startingPositionX;
-//        }
-        if (this.y > startingPositionY + 600 && this.y > this.startingPositionY){
+    private void setMovementRange(){
+        if (this.y > startingPositionY + roadHeight && this.y > this.startingPositionY){
             this.y = startingPositionY;
         }
 
-        if(this.y < this.startingPositionY && this.y < startingPositionY - 600 ){
+        if(this.y < this.startingPositionY && this.y < startingPositionY - roadHeight ){
             this.y = startingPositionY;
         }
         carImage.setTranslationY(this.y);

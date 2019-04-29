@@ -97,7 +97,6 @@ public class GameScreen extends AppCompatActivity {
         game.addCar(new Car(carImage2));
         game.addCar(new Car(carImage3));
         game.setCarMovement();
-        game.setRoadDimension(imageViewRoad.getHeight(), imageViewRoad.getWidth());
         game.setCollisionDetector();
         pBHalf.setVisibility(View.INVISIBLE);
         pbEmpty.setVisibility(View.INVISIBLE);
