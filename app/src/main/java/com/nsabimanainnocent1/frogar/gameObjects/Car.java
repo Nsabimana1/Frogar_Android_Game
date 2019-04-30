@@ -8,7 +8,7 @@ public class Car {
     private float velX, velY;
     private float startingPositionX, startingPositionY;
     private final float initialVelX = 2, initialVelY = 2;
-    private int speedFactor = 2;
+    private int carDimensionDivisionFactor = 3;
     private ImageView carImage;
     private final int roadHeight  = 600;
 
@@ -31,10 +31,10 @@ public class Car {
         this.x = startingPositionX;
         this.y = startingPositionY;
     }
-    public Integer getTop(){return (int) carImage.getY() - carImage.getHeight()/ 3 ;}
-    public Integer getLeft(){return (int) carImage.getX() - carImage.getWidth()/ 3 ;}
-    public Integer getRight(){return (int) carImage.getX() + carImage.getWidth()/ 3 ;}
-    public Integer getBottom(){return (int) carImage.getY() + carImage.getHeight()/ 3;}
+    public Integer getTop(){return (int) carImage.getY() - carImage.getHeight()/ carDimensionDivisionFactor ;}
+    public Integer getLeft(){return (int) carImage.getX() - carImage.getWidth()/ carDimensionDivisionFactor ;}
+    public Integer getRight(){return (int) carImage.getX() + carImage.getWidth()/ carDimensionDivisionFactor ;}
+    public Integer getBottom(){return (int) carImage.getY() + carImage.getHeight()/ carDimensionDivisionFactor;}
 
     public Float getX(){return this.x;}
     public Float getY(){return this.y;}
@@ -47,21 +47,6 @@ public class Car {
     public void moveDown(){
         this.y += velY;
         setMovementRange();
-    }
-
-    public void stop() {
-        this.velX = 0;
-        this.velY = 0;
-    }
-
-    public void speedUp() {
-        this.velX *= speedFactor;
-        this.velX *= speedFactor;
-    }
-
-    public void slowDown() {
-        this.velX /= speedFactor;
-        this.velX /= speedFactor;
     }
 
     public void resetPosition(){

@@ -15,11 +15,9 @@ import java.util.TimerTask;
 
 public class CarMovement{
     private ArrayList<Car> allCars;
-    private GameStateUpdater gameStateUpdater;
 
-    public CarMovement(ArrayList<Car> cars, GameStateUpdater gameStateUpdater) {
+    public CarMovement(ArrayList<Car> cars) {
         this.allCars = cars;
-        this.gameStateUpdater = gameStateUpdater;
     }
 
     public void moveCars() {

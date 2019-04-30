@@ -1,40 +1,35 @@
 package com.nsabimanainnocent1.frogar;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.nsabimanainnocent1.frogar.gameObjects.Car;
 import com.nsabimanainnocent1.frogar.gameObjects.Frog;
+import com.nsabimanainnocent1.frogar.gameObjects.ScoreKeeper;
 import com.nsabimanainnocent1.frogar.movement.Game;
-import com.nsabimanainnocent1.frogar.movement.GameStateUpdater;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class GameScreen extends AppCompatActivity {
     public ImageView imageViewRoad, frogImage, carImage1, carImage2, carImage3, pBFull, pBHalf, pbEmpty;
-    private TextView healthTitleView, scoreTitleView, scoreValueView, gameLevelView;
+    private TextView scoreValueView, gameLevelView;
     private Button playButton, restartButton;
-    private Integer scoreValue = 0;
-    private Float imageX = new Float(0f), imageY = new Float(0f);
+    private Integer scoreValue = 0, initialTimerInterval = 40, timerInterval = initialTimerInterval;
     private Game game;
-    private GameStateUpdater gameStateUpdater;
-    private Integer lives = 3;
     private boolean isMoving = false;
     private Timer timer;
-    private Integer timerInterval = 25;
-    private Integer level = 1;
-    private TextView testingView;
+    private ScoreKeeper scoreKeeper;
+    private final String tryAgainMessage = "Would you like to try again?";
+    private final String nextLevelMessage = "Would you like to continue to the next level?";
+    private final Integer reductionInterval = 10, fullHealth = 3, halfHealth = 2, lowHealth = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +43,6 @@ public class GameScreen extends AppCompatActivity {
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showFrogWhere();
                 game.starGame();
                 setTimer();
                 rumTimer();
@@ -58,10 +52,8 @@ public class GameScreen extends AppCompatActivity {
         restartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ProgressBar(true);
                 resetButton();
                 game.resetGame();
-//                game.starGame();
             }
         });
     }
@@ -71,8 +63,6 @@ public class GameScreen extends AppCompatActivity {
         pbEmpty = findViewById(R.id.ProgressBarEmpty);
         pBFull = findViewById(R.id.ProgressBarFull);
         pBHalf = findViewById(R.id.ProgressBarHalf);
-        healthTitleView = findViewById(R.id.heathTitle);
-        scoreTitleView = findViewById(R.id.scoreTitle);
         scoreValueView = findViewById(R.id.scoreValue);
         frogImage = findViewById(R.id.fromImage);
         playButton = findViewById(R.id.Play_Button);
@@ -81,12 +71,11 @@ public class GameScreen extends AppCompatActivity {
         carImage2 = findViewById(R.id.car2);
         carImage3 = findViewById(R.id.car3);
         gameLevelView = findViewById(R.id.gameLevel);
-        testingView = findViewById(R.id.testing);
     }
 
     private void initializeObjects(){
-        gameStateUpdater = new GameStateUpdater(scoreValueView, healthTitleView, gameLevelView);
-        game = new Game(gameStateUpdater);
+        scoreKeeper = new ScoreKeeper();
+        game = new Game();
         game.setFrog(new Frog(frogImage.getX(), frogImage.getY(), frogImage));
         game.setFrogMovement(this);
         game.addCar(new Car(carImage1));
@@ -94,52 +83,50 @@ public class GameScreen extends AppCompatActivity {
         game.addCar(new Car(carImage3));
         game.setCarMovement();
         game.setCollisionDetector();
+        game.setScoreKeeper(scoreKeeper);
+        pBFull.setVisibility(View.VISIBLE);
         pBHalf.setVisibility(View.INVISIBLE);
         pbEmpty.setVisibility(View.INVISIBLE);
+
     }
     public void resetButton(){
         this.initializeObjects();
     }
 
-    public void ProgressBar(Boolean collision){
-        if(collision && lives == 3){
-            pBFull.setVisibility(View.INVISIBLE);
-            pBHalf.setVisibility(View.VISIBLE);
-            lives -= 1;
-            scoreValue -= 1;
-        }else if(collision && lives == 2){
-            pBHalf.setVisibility(View.INVISIBLE);
-            pbEmpty.setVisibility(View.VISIBLE);
-            lives -=1;
-            scoreValue -= 1;
-        }else if(collision && lives == 1) {
-            displayToast("I am read for the next level");
+    public void manageHealthProgress(Boolean collisionHappened){
+        if(collisionHappened && scoreKeeper.getPlayerHealth() == fullHealth){
+            scoreKeeper.updatePlayerHealth(collisionHappened);
+            changeHealthView(pBHalf, pBFull);
+        }else if (collisionHappened && scoreKeeper.getPlayerHealth() == halfHealth){
+            scoreKeeper.updatePlayerHealth(collisionHappened);
+            changeHealthView(pbEmpty, pBHalf);
+        }else if(collisionHappened && scoreKeeper.getPlayerHealth() == lowHealth){
             this.stopTimer();
-            showDialogBox();
+            showDialogBox(tryAgainMessage);
         }
-    }
-    public void updateLevel() {
-        scoreValue = game.getScores();
-        if (scoreValue / 10 == 10) {
-            level +=1;
-            Log.i("I went to another level", "I am now one level " + level);
-        }
-    }
-    public int updateScore(boolean hasReachedGoal){
-        scoreTitleView.setText("Score:" + scoreValue);
-        return scoreValue += 10;
     }
 
-    public void showFrogWhere(){
-        Log.i("I was updated", "here I am");
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Integer imageX = imageViewRoad.getHeight();
-                Integer imageY = imageViewRoad.getWidth();
-                testingView.setText("frog is located at x: " + imageX.toString() + ", Y: " + imageY.toString() );
-            }
-        });
+    private void promptNextLevel(){
+        if(scoreKeeper.hasReachedMaxScores()){
+            stopTimer();
+            setTimer();
+            showDialogBox(nextLevelMessage);
+        }
+    }
+
+    private void nextLevelSettings(){
+        pBFull.setVisibility(View.VISIBLE);
+        setTimer();
+        scoreKeeper.increaseGameLevel();
+        scoreKeeper.resetScoreKeeper();
+        speedTimerInterval();
+        rumTimer();
+    }
+
+
+    public void changeHealthView(ImageView toMakeVisibleImage, ImageView toHideImage){
+        toMakeVisibleImage.setVisibility(View.VISIBLE);
+        toHideImage.setVisibility(View.INVISIBLE);
     }
 
     public void updateUI(){
@@ -152,10 +139,11 @@ public class GameScreen extends AppCompatActivity {
     }
 
     public void assignUIValues(){
-        this.scoreValue = game.getScores();
+        this.scoreValue = scoreKeeper.getScore();
         this.scoreValueView.setText(scoreValue.toString());
-        this.gameLevelView.setText("Level: " + level.toString());
-        this.ProgressBar(game.checkGameState());
+        this.gameLevelView.setText("Level: " + scoreKeeper.getGameLevel().toString());
+        this.manageHealthProgress(game.checkGameState());
+        promptNextLevel();
     }
 
     public void changeGameState(){
@@ -169,8 +157,7 @@ public class GameScreen extends AppCompatActivity {
                 @Override
                 public void run() {
                     game.getCarMovement().moveCars();
-                    game.checkScoring();
-                    updateUI();
+                    game.trackFrogMovementForScoring();
                     changeGameState();
                 }
             }, 0, timerInterval);
@@ -183,41 +170,36 @@ public class GameScreen extends AppCompatActivity {
     }
 
     public void speedTimerInterval(){
-        this.timerInterval /= 5;
+        this.timerInterval -= reductionInterval;
     }
 
     public void setTimer(){
         this.timer = new Timer();
-        this.timerInterval = 50;
-        lives = 3;
-        scoreValue = 0;
+        this.timerInterval = initialTimerInterval;
     }
 
-    public void displayToast(String message){
-        Context context = getApplicationContext();
-        CharSequence text = message;
-        int duration = Toast.LENGTH_SHORT;
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
+    public void resetGameSettings(){
+        setTimer();
+        game.resetCars();
+        resetButton();
     }
 
-
-    public void showDialogBox() {
+    public void showDialogBox(final String message) {
         // Use the Builder class for convenient dialog construction
         AlertDialog.Builder builder = new AlertDialog.Builder(GameScreen.this);
         builder.setCancelable(false);
         builder.setTitle("Game Status");
-        builder.setMessage("Your Score was:" + scoreValue+". Would you like to try again?");
+        builder.setMessage("Your Score was:" + scoreValue+". " + message);
         builder.setPositiveButton("Accept", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
                 /// Todo write code here
                 dialog.cancel();
-                setTimer();
-                speedTimerInterval();
-                updateLevel();
-                game.resetCars();
-                resetButton();
+                if(message.equals(nextLevelMessage)){
+                    nextLevelSettings();
+                }else{
+                    resetGameSettings();
+                }
             }
         })
                 .setNegativeButton("Quit", new DialogInterface.OnClickListener() {

@@ -3,10 +3,10 @@ package com.nsabimanainnocent1.frogar.gameObjects;
 import android.widget.ImageView;
 
 public class Frog {
-    private float x;
-    private float y;
+    private float x, y;
     private ImageView frogImage;
     private final float roadHeight = 220, roadWidth = 180;
+    private Integer divisionFactor = 3;
 
     public Frog(float x, float y, ImageView frogImage){
         this.x = x;
@@ -15,10 +15,15 @@ public class Frog {
         this.frogImage.setX(x); this.frogImage.setY(y);
     }
 
-    public Integer getTop(){return (int) frogImage.getY() - frogImage.getHeight()/ 3 ;}
-    public Integer getLeft(){return (int) frogImage.getX() - frogImage.getWidth()/ 3 ;}
-    public Integer getRight(){return (int) frogImage.getX() + frogImage.getWidth()/ 3 ;}
-    public Integer getBottom(){return (int) frogImage.getY() + frogImage.getHeight()/ 3;}
+    public Frog(float x, float y){
+        this.x = x;
+        this.y = y;
+    }
+
+    public Integer getTop(){return (int) frogImage.getY() - frogImage.getHeight()/ divisionFactor ;}
+    public Integer getLeft(){return (int) frogImage.getX() - frogImage.getWidth()/ divisionFactor ;}
+    public Integer getRight(){return (int) frogImage.getX() + frogImage.getWidth()/ divisionFactor ;}
+    public Integer getBottom(){return (int) frogImage.getY() + frogImage.getHeight()/ divisionFactor;}
 
     public void changePosition(float x, float y){
         restrictInBoundaries(x, y);
@@ -47,8 +52,4 @@ public class Frog {
     public Float getX(){
         return this.x;
     }
-    public float getY() {
-        return y;
-    }
-
 }

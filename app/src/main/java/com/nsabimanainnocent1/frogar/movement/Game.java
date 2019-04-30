@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.nsabimanainnocent1.frogar.gameObjects.Car;
 import com.nsabimanainnocent1.frogar.gameObjects.Frog;
+import com.nsabimanainnocent1.frogar.gameObjects.ScoreKeeper;
 
 import java.util.ArrayList;
 
@@ -13,18 +14,15 @@ public class Game {
     private Frog frog;
     private FrogMovement frogMovement;
     private CarMovement carMovement;
-    private final int roadWidth = 180, scoreInterval = 10;
-    private GameStateUpdater gameStateUpdater;
-    private Integer scores = 0;
+    private final int roadWidth = 180;
     private CollisionDetector collisionDetector;
+    private ScoreKeeper scoreKeeper;
 
 
     private boolean wasFrogInRightCorner = true, wasFrogInLeftCorner = true;
     private boolean isFrogInRightCorner = false, isFrogInLeftCorner = false;
 
-    public Game(GameStateUpdater gameStateUpdater){
-        this.gameStateUpdater = gameStateUpdater;
-    }
+    public Game(){ }
 
     public void addCar(Car car){
         this.allCars.add(car);
@@ -33,16 +31,19 @@ public class Game {
         this.frog = frog;
     }
     public void setCarMovement() {
-        this.carMovement = new CarMovement(allCars, gameStateUpdater);
+        this.carMovement = new CarMovement(allCars);
     }
 
     public void setFrogMovement(Context context) {
         this.frogMovement = new FrogMovement(frog, context);
     }
 
+    public void setScoreKeeper(ScoreKeeper scoreKeeper){
+        this.scoreKeeper = scoreKeeper;
+    }
+
     public void setCollisionDetector(){
         this.collisionDetector = new CollisionDetector(frog, allCars);
-        this.gameStateUpdater.setCollisionDetector(collisionDetector);
     }
 
     public void starGame(){
@@ -58,17 +59,17 @@ public class Game {
         return this.carMovement;
     }
 
-    public void checkScoring(){
+    public void trackFrogMovementForScoring(){
         checkFrogPosition();
         if(isFrogInRightCorner && wasFrogInLeftCorner){
-            this.scores += scoreInterval;
+            this.scoreKeeper.increaseScore();
             wasFrogInLeftCorner = false;
             isFrogInRightCorner = false;
             wasFrogInRightCorner = true;
         }
 
         if(isFrogInLeftCorner && wasFrogInRightCorner){
-            this.scores += scoreInterval;
+            this.scoreKeeper.increaseScore();
             isFrogInLeftCorner = false;
             wasFrogInRightCorner = false;
             wasFrogInLeftCorner = true;
@@ -91,9 +92,4 @@ public class Game {
     public void resetCars(){
         carMovement.restCars();
     }
-
-    public Integer getScores(){
-        return this.scores;
-    }
-
 }

@@ -8,7 +8,7 @@ import com.nsabimanainnocent1.frogar.gameObjects.Frog;
 
 import java.util.ArrayList;
 
-class CollisionDetector {
+public class CollisionDetector {
     private ArrayList<Car> allCars;
     private Frog frog;
     private boolean isCollided = false;
@@ -28,7 +28,7 @@ class CollisionDetector {
         return carRect;
     }
 
-    boolean checkWhetherCollided(){
+    public boolean checkWhetherCollided(){
         Rect frogRect = frogToRect(frog);
         for(Car car: allCars) {
             Rect carRect = carToRect(car);
